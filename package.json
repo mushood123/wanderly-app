@@ -7,13 +7,7 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest",
-    "clean": "npx react-native-clean-project",
-    "clean-files": "rm -rf yarn.lock && rm -rf Gemfile.lock && rm -rf node_modules && rm -rf ios/Pods && rm -rf ios/Gemfile.lock  && rm -rf ios/Podfile.lock && rm -rf ios/build && rm -rf ios/.xcode.env.local && rm -rf android/Gemfile.lock",
-    "setup": "yarn; yarn gem:install; yarn pod:install; yarn gradle;",
-    "gem:install": "bundle install; cd ios; bundle install; cd ..; cd android; bundle install; cd ..;",
-    "pod:install": "cd ios; pod install; cd ..;",
-    "gradle": "cd android; ./gradlew clean; cd .."
+    "test": "jest"
   },
   "dependencies": {
     "@react-native-firebase/app": "^20.3.0",
@@ -39,5 +33,6 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "packageManager": "yarn@3.6.4"
 }
