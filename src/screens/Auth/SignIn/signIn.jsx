@@ -5,61 +5,26 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from 'react-native';
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback} from 'react';
 import {styles} from './styles';
 import {FormField, Text} from '../../../components';
 import {useFormik} from 'formik';
-import * as Yup from 'yup';
-import {firebase} from '../../../firebase';
-
-const guide_explain_tourist = require('../../../assets/images/guide_explain_tourist.jpg');
-
-const emailRegex =
-  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-const regex = new RegExp(emailRegex);
-const isValidEmail = email => regex.test(email);
-
-const signInSchema = Yup.object().shape({
-  email: Yup.string()
-    .test(email => isValidEmail(email))
-    .email('Invalid email')
-    .required('Required'),
-  password: Yup.string()
-    .min(6, 'too short')
-    .max(20, 'too large')
-    .required('Required'),
-});
+import {guide_explain_tourist} from '../../../assets';
+import {formInit, signInCallback} from './utils';
 
 export const SignIn = ({navigation}) => {
-  const form = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema: signInSchema,
-    validateOnMount: false,
-  });
+  const form = useFormik(formInit);
 
   const {values, errors, handleChange} = form;
 
-  const signInPressed = useCallback(() => {
-    firebase.signInWithEmailAndPassword({
-      email: values.email,
-      password: values.password,
-      successCallback: r => {
-        console.log(r);
-      },
-      errorCallback: e => {
-        console.log(e.code);
-      },
-    });
-  }, [values]);
+  const signInPressed = useCallback(() => signInCallback(values), [values]);
+
   return (
     <KeyboardAvoidingView
       behavior="position"
       keyboardVerticalOffset={0}
       style={styles.container}>
-      <ScrollView style={styles.ScrollView}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
         <View style={styles.shadowContainer}>
           <View style={styles.imageContainer}>
             <Image source={guide_explain_tourist} style={styles.image} />

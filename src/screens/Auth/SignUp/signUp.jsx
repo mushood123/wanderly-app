@@ -8,71 +8,23 @@ import {
 import {styles} from './styles';
 import {FormField, Text} from '../../../components';
 import {useFormik} from 'formik';
-import * as Yup from 'yup';
 import {useCallback} from 'react';
-import {firebase} from '../../../firebase';
-
-const guide_explain_tourist = require('../../../assets/images/guide_explain_tourist.jpg');
-
-const emailRegex =
-  /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-const regex = new RegExp(emailRegex);
-const isValidEmail = email => regex.test(email);
-
-const signInSchema = Yup.object().shape({
-  email: Yup.string()
-    .test(email => isValidEmail(email))
-    .email('Invalid email')
-    .required('Required'),
-  newPassword: Yup.string()
-    .min(6, 'too short')
-    .max(20, 'too large')
-    .required('Required'),
-
-  confirmPassword: Yup.string()
-    .min(6, 'too short')
-    .max(20, 'too large')
-    .required('Required'),
-});
+import {formInit, signUpCallback} from './utils';
+import {guide_explain_tourist} from '../../../assets';
 
 export const SignUp = ({navigation}) => {
-  const form = useFormik({
-    initialValues: {
-      email: '',
-      newPassword: '',
-      confirmPassword: '',
-    },
-    validationSchema: signInSchema,
-    validateOnMount: false,
-  });
+  const form = useFormik(formInit);
 
   const {values, errors, handleChange} = form;
+
   const {
     email: emailError,
     newPassword: newPasswordError,
     confirmPassword: confirmPasswordError,
   } = errors;
-  const signupPressed = useCallback(() => {
-    if (values.newPassword !== values.confirmPassword) {
-      alert('new password does match confirm password');
-    } else {
-      firebase.createUserWithEmailAndPassword({
-        email: values.email,
-        password: values.confirmPassword,
-        successCallback: r => {
-          console.log(r);
-        },
-        errorCallback: e => {
-          if (e.code === 'auth/email-already-in-use') {
-            console.log('That email address is already in use!');
-          }
 
-          if (e.code === 'auth/invalid-email') {
-            console.log('That email address is invalid!');
-          }
-        },
-      });
-    }
+  const signupPressed = useCallback(() => {
+    signUpCallback(values);
   }, [values]);
 
   return (

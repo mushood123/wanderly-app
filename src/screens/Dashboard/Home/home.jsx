@@ -6,7 +6,7 @@ import {Text} from '../../../components';
 
 export const Home = ({navigation}) => {
   return (
-    <ScrollView style={styles.scrollView}>
+    <ScrollView contentContainerStyle={styles.scrollView}>
       <TouchableOpacity onPress={() => firebase.signOut()}>
         <Text style={styles.footerText}>Logout</Text>
       </TouchableOpacity>
