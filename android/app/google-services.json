@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "870909578662",
+    "project_id": "wanderly-project",
+    "storage_bucket": "wanderly-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:870909578662:android:666f4eea87cd010d9c9367",
+        "android_client_info": {
+          "package_name": "com.wanderlyapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfADYIowWTjQdw6Vq8pLi_1vWzli-rAF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
