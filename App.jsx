@@ -1,44 +1,50 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {SignIn, SignUp} from './src/screens';
-import {StatusBar, Text, TextInput} from 'react-native';
+import {DashboardHome, SignIn, SignUp} from './src/screens';
+import {StatusBar, TextInput} from 'react-native';
 import {font} from './src/theme/fonts';
+import {firebase} from './src/firebase';
 
 const RootStack = createNativeStackNavigator();
 
 const App = () => {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    console.log('SIGNEDIN_USER', user);
+    const getUser = async () => {
+      firebase.onAuthStateChanged(user => setUser(user));
+    };
+    getUser();
+  }, [user]);
+
   return (
     <NavigationContainer>
       <StatusBar hidden={true} />
-      <RootStack.Navigator>
-        <RootStack.Screen
-          options={{headerShown: false}}
-          name="SignIn"
-          component={SignIn}
-        />
-        <RootStack.Screen
-          options={{headerShown: false}}
-          name="SignUp"
-          component={SignUp}
-        />
-      </RootStack.Navigator>
+
+      {user === null ? (
+        <RootStack.Navigator>
+          <RootStack.Screen
+            options={{headerShown: false}}
+            name="SignIn"
+            component={SignIn}
+          />
+          <RootStack.Screen
+            options={{headerShown: false}}
+            name="SignUp"
+            component={SignUp}
+          />
+        </RootStack.Navigator>
+      ) : (
+        <RootStack.Navigator>
+          <RootStack.Screen
+            options={{headerShown: false}}
+            name="Dashboard"
+            component={DashboardHome}
+          />
+        </RootStack.Navigator>
+      )}
     </NavigationContainer>
-    // <NavigationContainer>
-    //   <StatusBar hidden={true} />
-    //   <RootStack.Navigator>
-    //     <RootStack.Screen
-    //       options={{headerShown: false}}
-    //       name="SignUp"
-    //       component={SignUp}
-    //     />
-    //     <RootStack.Screen
-    //       options={{headerShown: false}}
-    //       name="SignIn"
-    //       component={SignIn}
-    //     />
-    //   </RootStack.Navigator>
-    // </NavigationContainer>
   );
 };
 

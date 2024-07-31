@@ -1,14 +1,17 @@
 import {StyleSheet, Dimensions} from 'react-native';
 import {font} from '../../../theme/fonts';
 
+const screenDimensions = Dimensions.get('screen');
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#576dd7',
   },
+  scrollView: {
+    flexGrow: 1,
+  },
   shadowContainer: {
-    width: '130%',
-    height: '100%',
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 5},
     shadowOpacity: 0.2,
@@ -16,16 +19,14 @@ export const styles = StyleSheet.create({
     elevation: 5, // for Android shadow
   },
   imageContainer: {
-    width: '100%',
-    height: '100%',
     borderBottomLeftRadius: 300,
     borderBottomRightRadius: 300,
     overflow: 'hidden',
   },
   image: {
-    width: '100%',
-    height: '100%',
     resizeMode: 'cover',
+    height: screenDimensions.height * 0.4,
+    width: screenDimensions.width * 1,
   },
 
   welcomeText: {
@@ -44,14 +45,9 @@ export const styles = StyleSheet.create({
     fontSize: 15,
     textAlign: 'center',
   },
-  userInput: {
-    marginTop: '9%',
-    height: '7%',
-    width: '80%',
-    borderColor: '#000',
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    backgroundColor: '#E0B0FF',
+  formView: {
+    flex: 0.7,
+    marginHorizontal: 20,
   },
   buttonContainer: {
     marginTop: 20,
@@ -67,7 +63,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
   },
   footerContainer: {
-    marginTop: '45%',
+    marginTop: '20%',
     alignItems: 'center',
     display: 'flex',
     height: 'auto',
