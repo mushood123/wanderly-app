@@ -83,7 +83,9 @@ export const SignUp = ({navigation}) => {
 
           <TouchableOpacity
             onPress={signupPressed}
-            disabled={emailError || newPasswordError || confirmPasswordError}
+            disabled={
+              !!(emailError || newPasswordError || confirmPasswordError)
+            }
             style={styles.buttonContainer}>
             <Text style={styles.signUpButton}>Sign up</Text>
           </TouchableOpacity>
