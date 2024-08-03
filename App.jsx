@@ -11,9 +11,11 @@ const RootStack = createNativeStackNavigator();
 const App = () => {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    console.log('SIGNEDIN_USER', user);
+    // console.log('SIGNEDIN_USER', user);
     const getUser = async () => {
-      firebase.onAuthStateChanged(user => setUser(user));
+      firebase.onAuthStateChanged(user => {
+        setUser(user);
+      });
     };
     getUser();
   }, [user]);
@@ -38,6 +40,7 @@ const App = () => {
       ) : (
         <RootStack.Navigator>
           <RootStack.Screen
+            initialParams={{user: user}}
             options={{headerShown: false}}
             name="Dashboard"
             component={DashboardHome}

@@ -34,6 +34,7 @@ export const SignIn = ({navigation}) => {
           <Text style={styles.welcomeText}>Welcome Back</Text>
           <Text style={styles.loginText}>Login to your account</Text>
           <FormField
+            value={values.email}
             handleOnChangeText={handleChange('email')}
             title="Email"
             style={styles.test}
@@ -41,6 +42,7 @@ export const SignIn = ({navigation}) => {
           />
           {errors?.email && <Text style={{color: 'red'}}>{errors?.email}</Text>}
           <FormField
+            value={values.password}
             style={styles.test}
             title="Password"
             secureTextEntry={true}
@@ -52,7 +54,7 @@ export const SignIn = ({navigation}) => {
           )}
           <TouchableOpacity
             onPress={signInPressed}
-            disabled={errors?.email || errors?.password}
+            disabled={errors?.email || errors?.password ? true : false}
             style={styles.buttonContainer}>
             <Text style={styles.loginButton}>Login</Text>
           </TouchableOpacity>

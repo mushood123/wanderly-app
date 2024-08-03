@@ -3,8 +3,8 @@ import {signInSchema} from '../../../utils';
 
 export const formInit = {
   initialValues: {
-    email: '',
-    password: '',
+    email: 'muhammad.mushood@arbisoft.com',
+    password: 'Allahisone@1',
   },
   validationSchema: signInSchema,
   validateOnMount: false,

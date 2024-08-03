@@ -10,6 +10,7 @@ export const FormField = ({
   keyboardType,
   isValidate,
   handleOnChangeText,
+  value,
 }) => {
   return (
     <LinearGradient
@@ -21,6 +22,7 @@ export const FormField = ({
         ...style,
       }}>
       <TextInput
+        value={value}
         placeholderTextColor={'#294f8e90'}
         style={styles.textInput}
         placeholder={title}
