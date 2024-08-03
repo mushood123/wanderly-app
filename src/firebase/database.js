@@ -12,5 +12,5 @@ export const userRef = id => {
 };
 
 export const setCurrentUserLocation = (id, currentLocation) => {
-  userRef(id).push({currentLocation});
+  userRef(id).child('locations').set({currentLocation});
 };
