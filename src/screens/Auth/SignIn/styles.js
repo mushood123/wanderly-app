@@ -1,56 +1,65 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {font} from '../../../theme/fonts';
+
+const screenDimensions = Dimensions.get('screen');
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#CBC3E3',
+    backgroundColor: '#576dd7',
+  },
+  scrollView: {
+    flexGrow: 1,
+  },
+  shadowContainer: {
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 5},
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5, // for Android shadow
   },
   imageContainer: {
-    width: '100%',
-    height: '30%',
-    borderBottomLeftRadius: 150,
-    borderBottomRightRadius: 150,
+    borderBottomLeftRadius: 300,
+    borderBottomRightRadius: 300,
     overflow: 'hidden',
   },
   image: {
-    width: '100%',
-    height: '100%',
     resizeMode: 'cover',
+    height: screenDimensions.height * 0.4,
+    width: screenDimensions.width * 1,
   },
+
   welcomeText: {
-    marginTop: '5%',
+    marginTop: '10%',
+    marginBottom: 5,
     fontSize: 28,
     fontWeight: 'bold',
     color: 'white',
+    textAlign: 'center',
+    fontFamily: font.heading,
   },
   loginText: {
-    marginTop: '1%',
+    marginTop: '2%',
+    marginBottom: 20,
     color: 'white',
     fontSize: 15,
+    textAlign: 'center',
   },
-  userInput: {
-    marginTop: '9%',
-    height: '7%',
-    width: '80%',
-    borderColor: '#000',
-    borderRadius: 10,
-    paddingHorizontal: 10,
-    backgroundColor: '#E0B0FF',
+  formView: {
+    flex: 0.7,
+    marginHorizontal: 20,
   },
   buttonContainer: {
-    marginTop: '13%',
-    height: 40,
-    width: '30%',
+    marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
-    backgroundColor: '#C18FDD',
+    backgroundColor: '#293952',
   },
   loginButton: {
     color: 'white',
     textAlign: 'center',
-    paddingHorizontal: 16,
+    padding: 16,
     fontSize: 16,
   },
   footerContainer: {
@@ -63,5 +72,8 @@ export const styles = StyleSheet.create({
   footerText: {
     color: '#32CD32',
     fontSize: 15,
+  },
+  test: {
+    marginVertical: 12,
   },
 });

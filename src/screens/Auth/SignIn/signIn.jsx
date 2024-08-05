@@ -1,46 +1,72 @@
 import {
   TouchableOpacity,
-  SafeAreaView,
-  Text,
-  TextInput,
   View,
   Image,
+  ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useCallback} from 'react';
 import {styles} from './styles';
-import {FormField} from '../../../components/FormField/formField';
-
-const guide_explain_tourist = require('../../../assets/images/guide_explain_tourist.jpg');
+import {FormField, Text} from '../../../components';
+import {useFormik} from 'formik';
+import {guide_explain_tourist} from '../../../assets';
+import {formInit, signInCallback} from './utils';
 
 export const SignIn = ({navigation}) => {
-  const [form, setForm] = useState({
-    email: ' ',
-    password: '',
-  });
+  const form = useFormik(formInit);
 
-  const handleSignIn = () => {};
+  const {values, errors, handleChange} = form;
+
+  const signInPressed = useCallback(() => signInCallback(values), [values]);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image source={guide_explain_tourist} style={styles.image} />
-      </View>
-      <Text style={styles.welcomeText}>Welcome to Wanderly</Text>
-      <Text style={styles.loginText}>Login to your account</Text>
+    <KeyboardAvoidingView
+      behavior="position"
+      keyboardVerticalOffset={0}
+      style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        <View style={styles.shadowContainer}>
+          <View style={styles.imageContainer}>
+            <Image source={guide_explain_tourist} style={styles.image} />
+          </View>
+        </View>
+        <View style={styles.formView}>
+          <Text style={styles.welcomeText}>Welcome Back</Text>
+          <Text style={styles.loginText}>Login to your account</Text>
+          <FormField
+            value={values.email}
+            handleOnChangeText={handleChange('email')}
+            title="Email"
+            style={styles.test}
+            isValidate={errors?.email}
+          />
+          {errors?.email && <Text style={{color: 'red'}}>{errors?.email}</Text>}
+          <FormField
+            value={values.password}
+            style={styles.test}
+            title="Password"
+            secureTextEntry={true}
+            handleOnChangeText={handleChange('password')}
+            isValidate={errors?.password}
+          />
+          {errors?.password && (
+            <Text style={{color: 'red'}}>{errors?.password}</Text>
+          )}
+          <TouchableOpacity
+            onPress={signInPressed}
+            disabled={errors?.email || errors?.password ? true : false}
+            style={styles.buttonContainer}>
+            <Text style={styles.loginButton}>Login</Text>
+          </TouchableOpacity>
 
-      <FormField fieldType="username" />
-      <FormField />
-
-      <TouchableOpacity style={styles.buttonContainer} onPress={handleSignIn}>
-        <Text style={styles.loginButton}>Login</Text>
-      </TouchableOpacity>
-
-      <View style={styles.footerContainer}>
-        <Text style={{marginBottom: '1%'}}>Do not have an account?</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-          <Text style={styles.footerText}>Sign up</Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+          <View style={styles.footerContainer}>
+            <Text style={{marginBottom: '1%'}}>Do not have an account?</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+              <Text style={styles.footerText}>Sign up</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };

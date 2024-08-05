@@ -1,17 +1,34 @@
 import auth from '@react-native-firebase/auth';
 
-export const signInAnonymously = () => {
+export const createUserWithEmailAndPassword = ({
+  email,
+  password,
+  successCallback,
+  errorCallback,
+}) => {
   auth()
-    .signInAnonymously()
+    .createUserWithEmailAndPassword(email, password)
     .then(() => {
-      console.log('User signed in anonymously');
+      successCallback('User account created & signed in!');
     })
     .catch(error => {
-      if (error.code === 'auth/operation-not-allowed') {
-        console.log('Enable anonymous in your firebase console.');
-      }
-
-      console.error(error);
+      errorCallback(error);
+    });
+};
+export const signInWithEmailAndPassword = ({
+  email,
+  password,
+  successCallback,
+  errorCallback,
+}) => {
+  console.log(email, password);
+  auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(() => {
+      successCallback('signed in!');
+    })
+    .catch(error => {
+      errorCallback(error);
     });
 };
 
@@ -19,4 +36,8 @@ export const signOut = () => {
   auth()
     .signOut()
     .then(() => console.log('User signed out!'));
+};
+
+export const onAuthStateChanged = callBack => {
+  auth().onAuthStateChanged(callBack);
 };
