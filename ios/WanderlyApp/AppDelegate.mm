@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import <Firebase.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 #import <React/RCTBundleURLProvider.h>
 
@@ -7,6 +8,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  [GMSServices provideAPIKey:@"AIzaSyDf7tOimtRNQXonYzQ0UhyF_tZz0sEWbiI"]; // add this line using the api key obtained from Google Console
   [FIRApp configure];
   self.moduleName = @"WanderlyApp";
   // You can add your custom initial props in the dictionary below.
