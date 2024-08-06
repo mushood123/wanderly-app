@@ -1,9 +1,8 @@
 import {firebase} from '@react-native-firebase/database';
+import {firebaseDB} from '../assets';
 
 export const database = () => {
-  return firebase
-    .app()
-    .database('https://wanderly-project-default-rtdb.firebaseio.com/');
+  return firebase.app().database(firebaseDB);
 };
 
 export const userRef = id => {
