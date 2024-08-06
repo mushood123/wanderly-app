@@ -5,18 +5,20 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from 'react-native';
-import React, {useCallback} from 'react';
+import React, {useCallback, useContext} from 'react';
 import {styles} from './styles';
 import {FormField, Text} from '../../../components';
 import {useFormik} from 'formik';
 import {guide_explain_tourist} from '../../../assets';
 import {formInit, signInCallback} from './utils';
+import {LanguageContext} from '../../../contexts';
+import {ROUTES} from '../../../navigator';
 
 export const SignIn = ({navigation}) => {
+  const {locale} = useContext(LanguageContext);
   const form = useFormik(formInit);
 
   const {values, errors, handleChange} = form;
-
   const signInPressed = useCallback(() => signInCallback(values), [values]);
 
   return (
@@ -31,12 +33,14 @@ export const SignIn = ({navigation}) => {
           </View>
         </View>
         <View style={styles.formView}>
-          <Text style={styles.welcomeText}>Welcome Back</Text>
-          <Text style={styles.loginText}>Login to your account</Text>
+          <Text style={styles.welcomeText}>{locale.CLAUSE.WELCOME_BACK}</Text>
+          <Text style={styles.loginText}>
+            {locale.CLAUSE.LOGIN_TO_YOUR_ACCOUNT}
+          </Text>
           <FormField
             value={values.email}
             handleOnChangeText={handleChange('email')}
-            title="Email"
+            title={locale.LABEL.EMAIL}
             style={styles.test}
             isValidate={errors?.email}
           />
@@ -44,7 +48,7 @@ export const SignIn = ({navigation}) => {
           <FormField
             value={values.password}
             style={styles.test}
-            title="Password"
+            title={locale.LABEL.PASSWORD}
             secureTextEntry={true}
             handleOnChangeText={handleChange('password')}
             isValidate={errors?.password}
@@ -56,13 +60,16 @@ export const SignIn = ({navigation}) => {
             onPress={signInPressed}
             disabled={errors?.email || errors?.password ? true : false}
             style={styles.buttonContainer}>
-            <Text style={styles.loginButton}>Login</Text>
+            <Text style={styles.loginButton}>{locale.LABEL.LOGIN}</Text>
           </TouchableOpacity>
 
           <View style={styles.footerContainer}>
-            <Text style={{marginBottom: '1%'}}>Do not have an account?</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-              <Text style={styles.footerText}>Sign up</Text>
+            <Text style={{marginBottom: '1%'}}>
+              {locale.CLAUSE.DO_NOT_HAVE_AN_ACCOUNT}
+            </Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate(ROUTES.SignUp)}>
+              <Text style={styles.footerText}>{locale.LABEL.SIGN_UP}</Text>
             </TouchableOpacity>
           </View>
         </View>
