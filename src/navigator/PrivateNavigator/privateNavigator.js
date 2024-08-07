@@ -1,3 +1,4 @@
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ROUTES} from '../routes';
 import {BottomTabNavigator} from './bottomTabNavigator';
@@ -11,10 +12,5 @@ export const PrivateNavigator = () => (
       name={ROUTES.BottomTabNavigator}
       component={BottomTabNavigator}
     />
-    {/* <RootStack.Screen
-      options={{headerShown: false}}
-      name={ROUTES.Packages}
-      component={PackagesHome}
-    /> */}
   </RootStack.Navigator>
 );

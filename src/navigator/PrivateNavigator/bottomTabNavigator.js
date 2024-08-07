@@ -1,3 +1,4 @@
+import React from 'react';
 import {DashboardHome, ProfileHome} from '../../screens';
 import {ROUTES} from '../routes';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';

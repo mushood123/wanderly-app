@@ -1,3 +1,4 @@
+import React from 'react';
 import {PublicNavigator} from './PublicNavigator';
 import {PrivateNavigator} from './PrivateNavigator';
 import {NavigationContainer} from '@react-navigation/native';

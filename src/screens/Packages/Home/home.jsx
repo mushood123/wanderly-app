@@ -15,7 +15,7 @@ export const Home = ({navigation}) => {
     });
     return () => {
       // console.log('stop listening');
-      () => database().ref(`/users/${user}`).off('value', onValueChange);
+      () => firebase.database().ref(`/users/${user}`).off('value', onValueChange);
     };
   }, []);
 
