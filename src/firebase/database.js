@@ -13,3 +13,25 @@ export const userRef = id => {
 export const setCurrentUserLocation = (id, currentLocation) => {
   userRef(id).child('locations').set({currentLocation});
 };
+
+export const setCurrentUserRole = (id, role = 1) => {
+  userRef(id).child('role').set(role);
+};
+
+export const createOffer = (uid, packageDetails) => {
+  database().ref('orders').push({uid, packageDetails});
+};
+
+export const getOffers = ({successCB}) => {
+  database()
+    .ref('orders')
+    .on('value', snapshot => successCB(snapshot.val()));
+};
+
+export const getCurrentUserCreatedOffers = uid => {
+  database()
+    .ref('orders')
+    .orderByChild('uid')
+    .equalTo(uid)
+    .on('value', snapshot => console.log('DATA', snapshot.val()));
+};
