@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Image, View} from 'react-native';
+import {View} from 'react-native';
 import {Text} from '../Text';
 import {styles} from './styles';
 import {LanguageContext} from '../../contexts';
@@ -17,7 +17,6 @@ export const Card = ({hourlyRate = 0, places = [], name = 'Jane Doe'}) => {
       ranking: 1,
     },
   ];
-  let _places = Object.values(places);
   return (
     <View style={styles.card}>
       <View style={styles.header}>
@@ -30,7 +29,7 @@ export const Card = ({hourlyRate = 0, places = [], name = 'Jane Doe'}) => {
         <View style={styles.stats}>
           <Text style={styles.statValue}>{locale.CLAUSE.VISITING_PLACES}</Text>
 
-          {_places.map(place => {
+          {places.map(place => {
             return (
               <Text style={styles.title}>
                 {'-> '}

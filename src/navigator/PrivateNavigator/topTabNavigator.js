@@ -1,9 +1,9 @@
 import React, {useContext} from 'react';
-import {PackagesHome, OffersByMe} from '../../screens';
+import {PackagesHome, OffersByMe, AcceptedByMe} from '../../screens';
 import {ROUTES} from '../routes';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {font} from '../../theme/fonts';
-import {TouchableOpacity, Modal, View, Pressable} from 'react-native';
+import {TouchableOpacity, Modal, View} from 'react-native';
 import {Text} from '../../components';
 import {LanguageContext} from '../../contexts';
 import {PackagesContext} from '../../contexts/packages';
@@ -24,7 +24,11 @@ export const TopTabNavigator = () => {
   const {values, errors, handleChange} = form;
   const packageDetails = {
     hourlyRate: values?.hourlyRate,
-    places: values?.places,
+    places: values?.places
+      .replace('[', '')
+      .replace(']', '')
+      .split(',')
+      .map(String),
   };
 
   return (
@@ -36,7 +40,7 @@ export const TopTabNavigator = () => {
           tabBarStyle: {backgroundColor: 'powderblue'},
         }}>
         <Tab.Screen name={ROUTES.allOffers} component={PackagesHome} />
-        <Tab.Screen name={ROUTES.acceptedOffers} component={PackagesHome} />
+        <Tab.Screen name={ROUTES.acceptedOffers} component={AcceptedByMe} />
         <Tab.Screen name={ROUTES.createdOffers} component={OffersByMe} />
       </Tab.Navigator>
       <Modal
@@ -70,7 +74,11 @@ export const TopTabNavigator = () => {
 
           <TouchableOpacity
             onPress={() => {
-              firebase.createOffer(user.uid, packageDetails);
+              firebase.createOffer(
+                user.uid,
+                packageDetails,
+                JSON.stringify(user),
+              );
               setModalVisibility(!modalVisibility);
             }}
             style={{
