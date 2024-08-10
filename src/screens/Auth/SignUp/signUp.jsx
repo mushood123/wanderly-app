@@ -8,12 +8,15 @@ import {
 import {styles} from './styles';
 import {FormField, Text} from '../../../components';
 import {useFormik} from 'formik';
-import {useCallback} from 'react';
+import {useCallback, useContext} from 'react';
 import {formInit, signUpCallback} from './utils';
 import {guide_explain_tourist} from '../../../assets';
+import {LanguageContext} from '../../../contexts';
+import {ROUTES} from '../../../navigator';
 
 export const SignUp = ({navigation}) => {
   const form = useFormik(formInit);
+  const {locale} = useContext(LanguageContext);
 
   const {values, errors, handleChange} = form;
 
@@ -50,11 +53,15 @@ export const SignUp = ({navigation}) => {
             flex: 0.7,
             marginHorizontal: 20,
           }}>
-          <Text style={styles.welcomeText}>Welcome to Wanderly</Text>
-          <Text style={styles.signInText}>Create your account</Text>
+          <Text style={styles.welcomeText}>
+            {locale.CLAUSE.WELCOME_TO_WANDERLY}
+          </Text>
+          <Text style={styles.signInText}>
+            {locale.CLAUSE.CREATE_YOUR_ACCOUNT}
+          </Text>
 
           <FormField
-            title="Email"
+            title={locale.LABEL.EMAIL}
             style={styles.test}
             handleOnChangeText={handleChange('email')}
             isValidate={emailError}
@@ -62,7 +69,7 @@ export const SignUp = ({navigation}) => {
           {emailError && <Text style={{color: 'red'}}>{emailError}</Text>}
           <FormField
             handleOnChangeText={handleChange('newPassword')}
-            title="New Password"
+            title={locale.LABEL.NEW_PASSWORD}
             style={styles.test}
             secureTextEntry={true}
             isValidate={newPasswordError}
@@ -72,7 +79,7 @@ export const SignUp = ({navigation}) => {
           )}
           <FormField
             handleOnChangeText={handleChange('confirmPassword')}
-            title="Confirm Password"
+            title={locale.LABEL.CONFIRM_PASSWORD}
             style={styles.test}
             secureTextEntry={true}
             isValidate={confirmPasswordError}
@@ -87,13 +94,16 @@ export const SignUp = ({navigation}) => {
               !!(emailError || newPasswordError || confirmPasswordError)
             }
             style={styles.buttonContainer}>
-            <Text style={styles.signUpButton}>Sign up</Text>
+            <Text style={styles.signUpButton}>{locale.LABEL.SIGN_UP}</Text>
           </TouchableOpacity>
 
           <View style={styles.footerContainer}>
-            <Text style={{marginBottom: '1%'}}>Already have a account.</Text>
-            <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
-              <Text style={styles.footerText}>Sign in</Text>
+            <Text style={{marginBottom: '1%'}}>
+              {locale.CLAUSE.ALREADY_HAVE_AN_ACCOUNT}
+            </Text>
+            <TouchableOpacity
+              onPress={() => navigation.navigate(ROUTES.SignIn)}>
+              <Text style={styles.footerText}>{locale.LABEL.SIGN_IN}</Text>
             </TouchableOpacity>
           </View>
         </View>

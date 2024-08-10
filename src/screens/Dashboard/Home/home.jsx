@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {View} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {TouchableOpacity, View} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {styles} from './styles';
 import {firebase} from '../../../firebase';
@@ -8,16 +8,20 @@ import {
   getGeolocationWatchPosition,
   requestLocationPermissions,
 } from '../../../utils';
+import {AuthContext} from '../../../contexts';
+import {Text} from '../../../components';
+import {ROUTES} from '../../../navigator';
 
 export const Home = ({navigation, route}) => {
+  const {user} = useContext(AuthContext);
   const [location, setLocation] = useState({
     latitude: 37.78825,
     longitude: -122.4324,
     latitudeDelta: 0.015,
     longitudeDelta: 0.0121,
   });
-  const {user} = route?.params || {};
   useEffect(() => {
+    firebase.setCurrentUserRole(user?.uid);
     requestLocationPermissions();
     const watchID = getGeolocationWatchPosition(r => {
       const {latitude, longitude} = r?.coords || {};
@@ -28,11 +32,6 @@ export const Home = ({navigation, route}) => {
       clearGeolocationWatchPosition(watchID);
     };
   }, []);
-
-  // useEffect(() => {
-  //   console.log('location', JSON.stringify(location));
-  //   return () => {};
-  // }, [location]);
 
   return (
     <View style={styles.container}>
@@ -59,7 +58,42 @@ export const Home = ({navigation, route}) => {
         zoomTapEnabled
         provider={PROVIDER_GOOGLE} // remove if not using Google Maps
         style={styles.map}
-        region={location}></MapView>
+        region={location}
+      />
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate(ROUTES.Packages);
+        }}
+        style={{
+          backgroundColor: 'orange',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'absolute',
+          bottom: 120,
+          left: 10,
+          height: 60,
+          width: 60,
+          borderRadius: 30,
+        }}>
+        <Text>PACKAGES</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          firebase.signOut();
+        }}
+        style={{
+          backgroundColor: 'orange',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'absolute',
+          bottom: 45,
+          left: 10,
+          height: 60,
+          width: 60,
+          borderRadius: 30,
+        }}>
+        <Text>LOGOUT</Text>
+      </TouchableOpacity>
     </View>
   );
 };

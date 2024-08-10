@@ -27,3 +27,8 @@ export const signUpSchema = Yup.object().shape({
     .max(20, 'too large')
     .required('Required'),
 });
+
+export const PackageSchema = Yup.object().shape({
+  hourlyRate: Yup.number().max(50),
+  places: Yup.string().min(3),
+});
