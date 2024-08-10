@@ -10,6 +10,7 @@ import {
 } from '../../../utils';
 import {AuthContext} from '../../../contexts';
 import {Text} from '../../../components';
+import {ROUTES} from '../../../navigator';
 
 export const Home = ({navigation, route}) => {
   const {user} = useContext(AuthContext);
@@ -20,6 +21,7 @@ export const Home = ({navigation, route}) => {
     longitudeDelta: 0.0121,
   });
   useEffect(() => {
+    firebase.setCurrentUserRole(user?.uid);
     requestLocationPermissions();
     const watchID = getGeolocationWatchPosition(r => {
       const {latitude, longitude} = r?.coords || {};
@@ -58,6 +60,23 @@ export const Home = ({navigation, route}) => {
         style={styles.map}
         region={location}
       />
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate(ROUTES.Packages);
+        }}
+        style={{
+          backgroundColor: 'orange',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'absolute',
+          bottom: 120,
+          left: 10,
+          height: 60,
+          width: 60,
+          borderRadius: 30,
+        }}>
+        <Text>PACKAGES</Text>
+      </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
           firebase.signOut();
