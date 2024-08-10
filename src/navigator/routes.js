@@ -5,7 +5,7 @@ export const ROUTES = {
   Dashboard: 'Dashboard',
   Packages: 'Packages',
   Profile: 'Profile',
-  'All Offers': 'All Offers',
-  'Created Offers': 'Created Offers',
-  'Accepted Offers': 'Accepted Offers',
+  allOffers: 'All Offers',
+  createdOffers: 'Created Offers',
+  acceptedOffers: 'Accepted Offers',
 };

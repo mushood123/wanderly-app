@@ -5,6 +5,7 @@ export const CLAUSE = {
   WELCOME_TO_WANDERLY: 'وینڈرلی میں خوش آمدید',
   CREATE_YOUR_ACCOUNT: 'اپنا اکاؤنٹ بنائیں',
   ALREADY_HAVE_AN_ACCOUNT: 'کیا آپ کے پاس پہلے سے اکاؤنٹ ہے؟',
+  CREATE_PACKAGE: 'پیکج بنائیں',
 };
 
 export const LABEL = {

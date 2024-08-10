@@ -5,6 +5,9 @@ export const CLAUSE = {
   WELCOME_TO_WANDERLY: 'Welcome to Wanderly',
   CREATE_YOUR_ACCOUNT: 'Create your account',
   ALREADY_HAVE_AN_ACCOUNT: 'Already have a account.',
+  CREATE_PACKAGE: 'Create Package',
+  VISITING_PLACES: 'Visiting Places',
+  HOURLY_RATE: 'Hourly Rate',
 };
 
 export const LABEL = {
