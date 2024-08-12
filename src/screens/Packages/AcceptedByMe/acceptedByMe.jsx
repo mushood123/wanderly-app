@@ -1,23 +1,40 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {ScrollView} from 'react-native';
 import {styles} from './styles';
 import {AuthContext, PackagesContext} from '../../../contexts';
 
 import {LanguageContext} from '../../../contexts';
 import {firebase} from '../../../firebase';
+import {Card} from '../../../components';
 
 export const AcceptedByMe = () => {
-  const {locale} = useContext(LanguageContext);
   const {user} = useContext(AuthContext);
-  const {} = useContext(PackagesContext);
+  const {acceptedPackage, setAcceptedPackage} = useContext(PackagesContext);
   useEffect(() => {
-    firebase.getCurrentUserAcceptedOffers(user.uid, {
+    const onValueChange = firebase.getCurrentUserAcceptedOffers(user.uid, {
       successCB: data => {
-        console.log('THERE', data);
+        setAcceptedPackage(data);
       },
     });
-    return () => {};
+    return () => {
+      firebase.getOffersCloseConnection(onValueChange);
+    };
   }, []);
 
-  return <ScrollView contentContainerStyle={styles.container} />;
+  return (
+    <ScrollView contentContainerStyle={styles.container}>
+      {acceptedPackage &&
+        Object.keys(acceptedPackage).map(packageId => {
+          const {packageDetails, uid} = acceptedPackage[packageId];
+          return (
+            <Card
+              showButton
+              uid={uid}
+              currentUserId={user.uid}
+              {...packageDetails}
+            />
+          );
+        })}
+    </ScrollView>
+  );
 };

@@ -16,6 +16,13 @@ export const getUser = (id, {successCB}) => {
     .on('value', snapshot => successCB(snapshot.val()));
 };
 
+export const setUser = (id, data, {successCB}) => {
+  userRef(id)
+    .child('userData')
+    .set(data)
+    .then(() => successCB());
+};
+
 export const setCurrentUserLocation = (id, currentLocation) => {
   userRef(id).child('locations').set({currentLocation});
 };
@@ -39,6 +46,7 @@ export const getOffersCloseConnection = CB => {
 };
 
 export const getCurrentUserCreatedOffers = (uid, {successCB}) => {
+  console.log('LLLL', uid);
   database()
     .ref('orders')
     .orderByChild('uid')
