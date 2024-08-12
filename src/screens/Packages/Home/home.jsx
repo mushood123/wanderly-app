@@ -1,12 +1,13 @@
 import React, {useContext, useEffect} from 'react';
 import {ScrollView} from 'react-native';
 import {styles} from './styles';
-import {PackagesContext} from '../../../contexts';
+import {AuthContext, PackagesContext} from '../../../contexts';
 import {Card} from '../../../components';
 import {firebase} from '../../../firebase';
 
 export const Home = () => {
   const {allOffers, setAllOffers} = useContext(PackagesContext);
+  const {user} = useContext(AuthContext);
   useEffect(() => {
     const onValueChange = firebase.getOffers({
       successCB: data => {
@@ -22,8 +23,15 @@ export const Home = () => {
     <ScrollView contentContainerStyle={styles.container}>
       {allOffers &&
         Object.keys(allOffers).map(packageId => {
-          const {packageDetails} = allOffers[packageId];
-          return <Card {...packageDetails} />;
+          const {packageDetails, uid} = allOffers[packageId];
+          return (
+            <Card
+              showButton
+              uid={uid}
+              currentUserId={user.uid}
+              {...packageDetails}
+            />
+          );
         })}
     </ScrollView>
   );

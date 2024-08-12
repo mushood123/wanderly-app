@@ -30,7 +30,6 @@ export const OffersByMe = () => {
     return () => firebase.getOffersCloseConnection(onValueChange);
   }, []);
 
-  console.log('modalVisibility', modalVisibility);
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {createdOffer &&

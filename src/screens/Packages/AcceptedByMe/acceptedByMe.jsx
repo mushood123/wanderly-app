@@ -4,12 +4,18 @@ import {styles} from './styles';
 import {AuthContext, PackagesContext} from '../../../contexts';
 
 import {LanguageContext} from '../../../contexts';
+import {firebase} from '../../../firebase';
 
 export const AcceptedByMe = () => {
   const {locale} = useContext(LanguageContext);
-  const {} = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   const {} = useContext(PackagesContext);
   useEffect(() => {
+    firebase.getCurrentUserAcceptedOffers(user.uid, {
+      successCB: data => {
+        console.log('THERE', data);
+      },
+    });
     return () => {};
   }, []);
 

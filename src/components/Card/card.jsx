@@ -1,10 +1,17 @@
 import React, {useContext} from 'react';
-import {View} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
 import {Text} from '../Text';
 import {styles} from './styles';
 import {LanguageContext} from '../../contexts';
 
-export const Card = ({hourlyRate = 0, places = [], name = 'Jane Doe'}) => {
+export const Card = ({
+  hourlyRate = 0,
+  places = [],
+  name = 'Jane Doe',
+  currentUserId = 0,
+  uid,
+  showButton = false,
+}) => {
   const {locale} = useContext(LanguageContext);
 
   const designers = [
@@ -24,7 +31,7 @@ export const Card = ({hourlyRate = 0, places = [], name = 'Jane Doe'}) => {
           <Text style={styles.name}>{designers[0].name}</Text>
           <Text>City of user</Text>
         </View>
-        <View style={styles.saperator}></View>
+        <View style={styles.saperator} />
 
         <View style={styles.stats}>
           <Text style={styles.statValue}>{locale.CLAUSE.VISITING_PLACES}</Text>
@@ -44,6 +51,22 @@ export const Card = ({hourlyRate = 0, places = [], name = 'Jane Doe'}) => {
           </Text>
         </View>
       </View>
+      {console.log(currentUserId, uid)}
+      {showButton && (
+        <TouchableOpacity
+          style={{
+            backgroundColor: 'white',
+            borderRadius: 10,
+            paddingVertical: 20,
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginVertical: 10,
+          }}>
+          <Text style={styles.statValue}>
+            {uid === currentUserId ? 'Edit' : 'Buy'}
+          </Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

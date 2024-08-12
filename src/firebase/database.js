@@ -45,3 +45,11 @@ export const getCurrentUserCreatedOffers = (uid, {successCB}) => {
     .equalTo(uid)
     .on('value', snapshot => successCB(snapshot.val()));
 };
+
+export const getCurrentUserAcceptedOffers = (uid, {successCB}) => {
+  database()
+    .ref('orders')
+    .orderByChild(`acceptedBy/${uid}`)
+    .equalTo(true)
+    .on('value', snapshot => successCB(snapshot.val()));
+};
