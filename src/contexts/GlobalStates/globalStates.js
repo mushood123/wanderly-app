@@ -18,13 +18,17 @@ export const GlobalStates = ({children}) => {
   useEffect(() => {
     const getUser = () => {
       firebase.onAuthStateChanged(user => {
-        const _u = JSON.stringify(user);
-        firebase.getUser(user.uid, {
-          successCB: _user => {
-            setUser({...JSON.parse(_u), ..._user});
-            setLoading(false);
-          },
-        });
+        if (user) {
+          const _u = JSON.stringify(user);
+          firebase.getUser(user.uid, {
+            successCB: _user => {
+              setUser({...JSON.parse(_u), ..._user});
+              setLoading(false);
+            },
+          });
+        } else {
+          setLoading(false);
+        }
       });
     };
     getUser();
