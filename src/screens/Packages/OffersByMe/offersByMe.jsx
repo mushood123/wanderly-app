@@ -22,6 +22,7 @@ export const OffersByMe = () => {
     <ScrollView contentContainerStyle={styles.container}>
       {createdOffer &&
         Object.keys(createdOffer).map(packageId => {
+          console.log('packageId', packageId);
           const {packageDetails} = createdOffer[packageId];
           return (
             <Card
