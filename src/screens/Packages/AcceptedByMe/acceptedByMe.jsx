@@ -28,7 +28,7 @@ export const AcceptedByMe = () => {
           const {packageDetails, uid} = acceptedPackage[packageId];
           return (
             <Card
-              showButton
+              showButton={false}
               uid={uid}
               currentUserId={user.uid}
               {...packageDetails}

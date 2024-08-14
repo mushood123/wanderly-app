@@ -7,6 +7,7 @@ import {firebase} from '../../../firebase';
 
 export const OffersByMe = () => {
   const {user} = useContext(AuthContext);
+  const {userData} = user;
 
   const {createdOffer, setCreatedOffers} = useContext(PackagesContext);
   useEffect(() => {
@@ -22,10 +23,10 @@ export const OffersByMe = () => {
     <ScrollView contentContainerStyle={styles.container}>
       {createdOffer &&
         Object.keys(createdOffer).map(packageId => {
-          console.log('packageId', packageId);
           const {packageDetails} = createdOffer[packageId];
           return (
             <Card
+              name={userData?.name}
               showButton
               uid={user.uid}
               currentUserId={user.uid}
