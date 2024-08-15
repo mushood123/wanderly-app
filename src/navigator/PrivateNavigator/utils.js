@@ -6,5 +6,5 @@ export const formInit = {
     places: '',
   },
   validationSchema: PackageSchema,
-  validateOnMount: false,
+  validateOnMount: true,
 };

@@ -29,4 +29,15 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   x: {color: 'red', fontSize: 20},
+  addCreatePackage: {
+    position: 'absolute',
+    backgroundColor: 'white',
+    width: 50,
+    right: 30,
+    bottom: 320,
+    height: 50,
+    borderRadius: 25,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

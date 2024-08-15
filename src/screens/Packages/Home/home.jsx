@@ -1,5 +1,5 @@
-import React, {useContext, useEffect} from 'react';
-import {Modal, ScrollView} from 'react-native';
+import React, {useContext, useEffect, useCallback} from 'react';
+import {ScrollView} from 'react-native';
 import {styles} from './styles';
 import {AuthContext, PackagesContext} from '../../../contexts';
 import {Card} from '../../../components';
@@ -19,7 +19,9 @@ export const Home = () => {
       firebase.getOffersCloseConnection(onValueChange);
     };
   }, []);
-
+  const onBuyPressed = useCallback((pid, uid) => {
+    firebase.setCurrentUserAcceptedOffers(pid, uid);
+  }, []);
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {allOffers &&
@@ -30,10 +32,12 @@ export const Home = () => {
           return (
             user.uid !== uid && (
               <Card
-                key={packageId}
+                offer={allOffers[packageId]}
+                packageId={packageId}
                 name={userData?.name}
                 showButton={true}
                 uid={uid}
+                onBuyPressed={onBuyPressed}
                 currentUserId={user.uid}
                 {...packageDetails}
               />

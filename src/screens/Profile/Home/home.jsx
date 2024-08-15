@@ -8,9 +8,11 @@ import {useFormik} from 'formik';
 import {formInit} from './utils';
 import {ROUTES} from '../../../navigator';
 import {firebase} from '../../../firebase';
+import {LanguageContext} from '../../../contexts';
 
 export const Home = ({navigation}) => {
   const {user, setUser} = useContext(AuthContext);
+  const {locale} = useContext(LanguageContext);
   const form = useFormik(formInit(user?.userData || {}));
   const {values, errors, handleChange} = form;
 
@@ -31,28 +33,28 @@ export const Home = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <FormField value={user?.email} disable style={styles.formField} />
       <FormField
-        title={'Name'}
+        title={locale.LABEL.NAME}
         handleOnChangeText={handleChange('name')}
         style={styles.formField}
         value={values?.name}
         isValidate={errors?.name}
       />
       <FormField
-        title={'Age'}
+        title={locale.LABEL.AGE}
         handleOnChangeText={handleChange('age')}
         style={styles.formField}
         value={values?.age}
         isValidate={errors?.age}
       />
       <FormField
-        title={'Phone'}
+        title={locale.LABEL.PHONE}
         handleOnChangeText={handleChange('phone')}
         style={styles.formField}
         value={values?.phone}
         isValidate={errors?.phone}
       />
       <FormField
-        title={'Experience'}
+        title={locale.LABEL.EXPERIENCE}
         handleOnChangeText={handleChange('experience')}
         style={styles.formField}
         value={values?.experience}
@@ -65,7 +67,7 @@ export const Home = ({navigation}) => {
         disabled={
           errors?.age || errors?.name || errors?.experience || errors?.phone
         }>
-        <Text style={styles.buttonText}>Confirm</Text>
+        <Text style={styles.buttonText}>{locale.LABEL.CONFIRM}</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

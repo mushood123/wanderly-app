@@ -71,9 +71,35 @@ export const getCurrentUserCreatedOffers = (uid, {successCB}) => {
 };
 
 export const getCurrentUserAcceptedOffers = (uid, {successCB}) => {
-  database()
+  const onValueChange = database()
     .ref('orders')
-    .orderByChild(`acceptedBy/${uid}`)
-    .equalTo(true)
-    .on('value', snapshot => successCB(snapshot.val()));
+    .on(
+      'value',
+      snapshot => {
+        const orders = snapshot.val();
+        const filteredOrders = {};
+
+        for (const orderId in orders) {
+          const acceptedBy = orders[orderId].acceptedBy || {};
+
+          for (const key in acceptedBy) {
+            if (acceptedBy[key] === uid) {
+              filteredOrders[orderId] = orders[orderId];
+              break;
+            }
+          }
+        }
+
+        successCB(filteredOrders);
+      },
+      error => {
+        console.error('Error fetching accepted offers:', error);
+      },
+    );
+
+  return () => database().ref('orders').off('value', onValueChange); // Return a cleanup function to stop listening
+};
+
+export const setCurrentUserAcceptedOffers = (pid, uid) => {
+  database().ref(`orders/${pid}/acceptedBy`).push(uid);
 };

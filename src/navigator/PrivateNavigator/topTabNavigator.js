@@ -52,14 +52,14 @@ export const TopTabNavigator = () => {
         }}>
         <View style={styles.modalContainer}>
           <FormField
-            title={'Set Hourly Rate'}
+            title={locale.CLAUSE.SET_HOURLY_RATE}
             style={{marginBottom: 10}}
             value={values.hourlyRate}
             handleOnChangeText={handleChange('hourlyRate')}
             isValidate={errors?.hourlyRate}
           />
           <FormField
-            title={'Enter Place to Visit'}
+            title={locale.CLAUSE.ENTER_PLACE_TO_VIST}
             value={values.places}
             handleOnChangeText={handleChange('places')}
             isValidate={errors?.places}
