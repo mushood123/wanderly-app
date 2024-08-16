@@ -22,11 +22,12 @@ export const AcceptedByMe = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {acceptedPackage &&
-        Object.keys(acceptedPackage).map(packageId => {
+        Object.keys(acceptedPackage).map((packageId, index) => {
           const {packageDetails, uid, profile} = acceptedPackage[packageId];
           const {userData} = profile;
           return (
             <Card
+              key={`${packageId}_${index}_accepted`}
               name={userData?.name}
               showButton={false}
               uid={uid}

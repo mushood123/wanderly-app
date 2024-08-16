@@ -33,11 +33,12 @@ export const OffersByMe = () => {
     <>
       <ScrollView contentContainerStyle={styles.container}>
         {createdOffer &&
-          Object.keys(createdOffer).map(packageId => {
+          Object.keys(createdOffer).map((packageId, index) => {
             const {packageDetails} = createdOffer[packageId];
             return (
               <>
                 <Card
+                  key={`${packageId}_${index}_created`}
                   offer={createdOffer[packageId]}
                   packageId={packageId}
                   name={userData?.name}

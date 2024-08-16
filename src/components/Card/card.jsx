@@ -32,9 +32,9 @@ export const Card = ({
         <View style={styles.stats}>
           <Text style={styles.statValue}>{locale.CLAUSE.VISITING_PLACES}</Text>
 
-          {places.map(place => {
+          {places.map((place, index) => {
             return (
-              <Text style={styles.title}>
+              <Text key={index} style={styles.title}>
                 {'-> '}
                 {place}
               </Text>

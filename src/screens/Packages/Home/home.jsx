@@ -25,13 +25,14 @@ export const Home = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {allOffers &&
-        Object.keys(allOffers).map(packageId => {
+        Object.keys(allOffers).map((packageId, index) => {
           const {packageDetails, uid, profile} = allOffers[packageId];
           const {userData} = profile;
 
           return (
             user.uid !== uid && (
               <Card
+                key={`${packageId}_${index}_all`}
                 offer={allOffers[packageId]}
                 packageId={packageId}
                 name={userData?.name}
