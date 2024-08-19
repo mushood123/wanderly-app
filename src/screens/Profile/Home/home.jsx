@@ -2,14 +2,7 @@ import React, {useCallback, useContext, useEffect, useState} from 'react';
 import {styles} from './styles';
 import {AuthContext} from '../../../contexts';
 import {FormField, Text} from '../../../components';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {
-  ActivityIndicator,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
 import {useFormik} from 'formik';
 import {formInit} from './utils';
 import {ROUTES} from '../../../navigator';
@@ -17,6 +10,8 @@ import {firebase} from '../../../firebase';
 import {LanguageContext} from '../../../contexts';
 import {IconAvatar, IconCross, IconLogo, IconTick} from '../../../assets';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import LottieView from 'lottie-react-native';
+import {animLoader} from '../../../assets';
 
 export const Home = ({navigation}) => {
   const {user, setUser} = useContext(AuthContext);
@@ -66,7 +61,14 @@ export const Home = ({navigation}) => {
       <IconLogo style={{alignSelf: 'center'}} height={100} />
       <View style={{alignSelf: 'center'}}>
         {imageLoader ? (
-          <ActivityIndicator />
+          <>
+            <LottieView
+              source={animLoader}
+              autoPlay
+              loop
+              style={{width: 200, height: 200, alignSelf: 'center'}}
+            />
+          </>
         ) : image || user?.userData?.profileImage ? (
           <>
             <Image
@@ -112,6 +114,7 @@ export const Home = ({navigation}) => {
           <IconAvatar height={250} width={250} />
         )}
       </View>
+
       <TouchableOpacity
         onPress={() => setProfilePic()}
         style={styles.buttonContainer}

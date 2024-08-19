@@ -28,7 +28,6 @@ export const Home = () => {
         Object.keys(allOffers).map((packageId, index) => {
           const {packageDetails, uid, profile} = allOffers[packageId];
           const {userData} = profile;
-
           return (
             user.uid !== uid && (
               <Card

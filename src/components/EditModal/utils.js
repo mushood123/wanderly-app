@@ -1,4 +1,4 @@
-import {PackageSchema} from '../../../utils';
+import {PackageSchema} from '../../utils';
 
 export const formInit = ({hourlyRate = '', places = ''}) => {
   return {

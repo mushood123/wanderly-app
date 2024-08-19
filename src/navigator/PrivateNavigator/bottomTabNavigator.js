@@ -15,7 +15,9 @@ export const BottomTabNavigator = () => {
         component={DashboardHome}
         options={{
           headerShown: false,
-          tabBarIcon: () => <IconDashboard height={30} width={30} />,
+          tabBarIcon: ({focused}) => (
+            <IconDashboard height={30} width={30} focused={focused} />
+          ),
         }}
       />
       <Tab.Screen
@@ -23,7 +25,9 @@ export const BottomTabNavigator = () => {
         component={TopTabNavigator}
         options={{
           headerShown: false,
-          tabBarIcon: () => <IconPackages height={30} width={30} />,
+          tabBarIcon: ({focused}) => (
+            <IconPackages height={30} width={30} focused={focused} />
+          ),
         }}
       />
       <Tab.Screen
@@ -31,7 +35,9 @@ export const BottomTabNavigator = () => {
         component={ProfileHome}
         options={{
           headerShown: false,
-          tabBarIcon: () => <IconProfile height={30} width={30} />,
+          tabBarIcon: ({focused}) => (
+            <IconProfile height={30} width={30} focused={focused} />
+          ),
         }}
       />
     </Tab.Navigator>

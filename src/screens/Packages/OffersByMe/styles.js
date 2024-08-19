@@ -40,4 +40,21 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  slider: {
+    flex: 1,
+    width: 50,
+    backgroundColor: 'purple',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
+    borderRadius: 100,
+    marginHorizontal: 3,
+    marginVertical: 5,
+  },
+  sliderText: {
+    marginHorizontal: 'auto',
+    fontWeight: 'bold',
+    color: 'white',
+    fontSize: 20,
+  },
 });

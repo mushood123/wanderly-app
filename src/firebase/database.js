@@ -71,35 +71,34 @@ export const getCurrentUserCreatedOffers = (uid, {successCB}) => {
 };
 
 export const getCurrentUserAcceptedOffers = (uid, {successCB}) => {
-  const onValueChange = database()
+  database()
     .ref('orders')
-    .on(
-      'value',
-      snapshot => {
+    .orderByChild(`acceptedBy/${uid}`)
+    .equalTo(true)
+    .on('value', snapshot => {
+      if (snapshot.exists()) {
         const orders = snapshot.val();
-        const filteredOrders = {};
-
-        for (const orderId in orders) {
-          const acceptedBy = orders[orderId].acceptedBy || {};
-
-          for (const key in acceptedBy) {
-            if (acceptedBy[key] === uid) {
-              filteredOrders[orderId] = orders[orderId];
-              break;
-            }
-          }
-        }
-
-        successCB(filteredOrders);
-      },
-      error => {
-        console.error('Error fetching accepted offers:', error);
-      },
-    );
-
-  return () => database().ref('orders').off('value', onValueChange); // Return a cleanup function to stop listening
+        console.log('Orders:', orders);
+        successCB(orders);
+      } else {
+        console.log('No orders found');
+      }
+    });
 };
 
 export const setCurrentUserAcceptedOffers = (pid, uid) => {
-  database().ref(`orders/${pid}/acceptedBy`).push(uid);
+  database().ref(`orders/${pid}/acceptedBy/${uid}`).set(true);
+  console.log('called');
+};
+
+export const deleteCurrentUserCreatedOffer = pid => {
+  database()
+    .ref(`orders/${pid}`)
+    .remove()
+    .then(() => {
+      console.log(`${pid} removed successfully`);
+    })
+    .catch(error => {
+      console.error('Error removing order:', error);
+    });
 };

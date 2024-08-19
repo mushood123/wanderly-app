@@ -1,11 +1,12 @@
 import React, {useCallback, useContext, useEffect, useState} from 'react';
-import {ScrollView, Modal, View, TouchableOpacity, Text} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
 import {AuthContext, PackagesContext} from '../../../contexts';
-import {Card, FormField} from '../../../components';
+import {Card, EditModal} from '../../../components';
 import {firebase} from '../../../firebase';
-import {formInit} from './utils';
-import {useFormik} from 'formik';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
+import Reanimated, {useAnimatedStyle} from 'react-native-reanimated';
 
 export const OffersByMe = () => {
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -28,17 +29,49 @@ export const OffersByMe = () => {
     setRequestedPackage(offer);
     setModalVisibility(true);
   }, []);
+  const RightAction = ({prog, drag, packageId}) => {
+    const styleAnimation = useAnimatedStyle(() => {
+      return {
+        transform: [{translateX: drag.value + 50}],
+      };
+    });
+
+    return (
+      <Reanimated.View style={styleAnimation}>
+        <TouchableOpacity
+          style={styles.slider}
+          onPress={() => {
+            console.log('delete package', packageId);
+            firebase.deleteCurrentUserCreatedOffer(packageId);
+          }}>
+          <View>
+            <Text style={styles.sliderText}>D</Text>
+            <Text style={styles.sliderText}>E</Text>
+            <Text style={styles.sliderText}>L</Text>
+            <Text style={styles.sliderText}>E</Text>
+            <Text style={styles.sliderText}>T</Text>
+            <Text style={styles.sliderText}>E</Text>
+          </View>
+        </TouchableOpacity>
+      </Reanimated.View>
+    );
+  };
 
   return (
-    <>
+    <GestureHandlerRootView style={{flex: 1}}>
       <ScrollView contentContainerStyle={styles.container}>
         {createdOffer &&
           Object.keys(createdOffer).map((packageId, index) => {
             const {packageDetails} = createdOffer[packageId];
             return (
-              <>
+              <ReanimatedSwipeable
+                key={`${packageId}_${index}_created`}
+                overshootRight={true}
+                dragOffsetFromRightEdge={10}
+                renderRightActions={(prog, drag) => (
+                  <RightAction prog={prog} drag={drag} packageId={packageId} />
+                )}>
                 <Card
-                  key={`${packageId}_${index}_created`}
                   offer={createdOffer[packageId]}
                   packageId={packageId}
                   name={userData?.name}
@@ -48,7 +81,7 @@ export const OffersByMe = () => {
                   onEditPressed={onEditPressed}
                   {...packageDetails}
                 />
-              </>
+              </ReanimatedSwipeable>
             );
           })}
       </ScrollView>
@@ -58,72 +91,6 @@ export const OffersByMe = () => {
         requestedPackage={requestedPackage}
         setRequestedPackage={setRequestedPackage}
       />
-    </>
+    </GestureHandlerRootView>
   );
-};
-
-const EditModal = ({
-  modalVisibility,
-  setModalVisibility,
-  requestedPackage,
-  setRequestedPackage,
-}) => {
-  if (requestedPackage) {
-    const form = useFormik(formInit(requestedPackage?.packageDetails || {}));
-    const {values, errors, handleChange} = form;
-    return (
-      requestedPackage && (
-        <Modal
-          transparent
-          visible={modalVisibility}
-          animationType="slide"
-          onRequestClose={() => {
-            setRequestedPackage(null);
-            setModalVisibility(false);
-          }}>
-          <View style={styles.modalContainer}>
-            <FormField
-              title={requestedPackage?.hourlyRate}
-              style={{marginBottom: 10}}
-              value={values.hourlyRate}
-              handleOnChangeText={handleChange('hourlyRate')}
-              isValidate={errors?.hourlyRate}
-            />
-
-            <FormField
-              title={'Places'}
-              value={values?.places.toString()}
-              handleOnChangeText={handleChange('places')}
-              isValidate={errors?.places}
-            />
-            <TouchableOpacity
-              onPress={() => {
-                setRequestedPackage(null);
-                setModalVisibility(false);
-              }}
-              style={styles.closeCreatePackage}>
-              <Text style={styles.x}>X</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              disabled={errors?.hourlyRate || errors?.places}
-              onPress={() => {
-                setRequestedPackage(null);
-                setModalVisibility(false);
-                firebase.setOrder(
-                  requestedPackage.packageId,
-                  {...values, places: [values.places]},
-                  {
-                    successCB: () =>
-                      console.log('Package Updated Successfully'),
-                  },
-                );
-              }}
-              style={styles.addCreatePackage}>
-              <Text style={{fontSize: 40, color: 'green'}}>+</Text>
-            </TouchableOpacity>
-          </View>
-        </Modal>
-      )
-    );
-  }
 };

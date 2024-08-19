@@ -13,6 +13,7 @@ import {FormField} from '../../components';
 import {formInit} from './utils';
 import {useFormik} from 'formik';
 import {AuthContext} from '../../contexts';
+import {IconCreatePackage} from '../../assets';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -92,9 +93,7 @@ export const TopTabNavigator = () => {
           setModalVisibility(!modalVisibility);
         }}
         style={styles.createPackageContainer}>
-        <Text style={{color: 'red', fontSize: 20}}>
-          {locale.CLAUSE.CREATE_PACKAGE}
-        </Text>
+        <IconCreatePackage height={40} width={40} />
       </TouchableOpacity>
     </>
   );
