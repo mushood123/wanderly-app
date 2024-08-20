@@ -64,7 +64,7 @@ export const SignIn = ({navigation}) => {
           </TouchableOpacity>
 
           <View style={styles.footerContainer}>
-            <Text style={{marginBottom: '1%'}}>
+            <Text style={styles.footerGap}>
               {locale.CLAUSE.DO_NOT_HAVE_AN_ACCOUNT}
             </Text>
             <TouchableOpacity

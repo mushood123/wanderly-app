@@ -10,6 +10,8 @@ export const CLAUSE = {
   HOURLY_RATE: 'Hourly Rate',
   SET_HOURLY_RATE: 'Set Hourly Rate',
   ENTER_PLACE_TO_VIST: 'Enter Place to Visit',
+  SELECT_IMAGE_FROM_GALLERY: 'Select Image from Gallery',
+  SELECT_IMAGE_FROM_CAMERA: 'Select Image from Camera',
 };
 
 export const LABEL = {

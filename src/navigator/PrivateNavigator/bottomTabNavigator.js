@@ -1,9 +1,14 @@
 import React from 'react';
-import {DashboardHome, ProfileHome} from '../../screens';
+import {DashboardHome, ProfileHome, Checkout} from '../../screens';
 import {ROUTES} from '../routes';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {TopTabNavigator} from './topTabNavigator';
-import {IconDashboard, IconPackages, IconProfile} from '../../assets';
+import {
+  IconDashboard,
+  IconPackages,
+  IconPayment,
+  IconProfile,
+} from '../../assets';
 
 const Tab = createBottomTabNavigator();
 
@@ -37,6 +42,16 @@ export const BottomTabNavigator = () => {
           headerShown: false,
           tabBarIcon: ({focused}) => (
             <IconProfile height={30} width={30} focused={focused} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name={ROUTES.Checkout}
+        component={Checkout}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({focused}) => (
+            <IconPayment height={30} width={30} focused={focused} />
           ),
         }}
       />

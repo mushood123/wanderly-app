@@ -37,22 +37,14 @@ export const SignUp = ({navigation}) => {
       enabled
       keyboardVerticalOffset={30}>
       <ScrollView>
-        <View
-          style={{
-            flex: 0.3,
-            alignItems: 'center',
-          }}>
+        <View>
           <View style={styles.shadowContainer}>
             <View style={styles.imageContainer}>
               <Image source={guide_explain_tourist} style={styles.image} />
             </View>
           </View>
         </View>
-        <View
-          style={{
-            flex: 0.7,
-            marginHorizontal: 20,
-          }}>
+        <View style={styles.fieldsContainer}>
           <Text style={styles.welcomeText}>
             {locale.CLAUSE.WELCOME_TO_WANDERLY}
           </Text>
@@ -75,7 +67,7 @@ export const SignUp = ({navigation}) => {
             isValidate={newPasswordError}
           />
           {newPasswordError && (
-            <Text style={{color: 'red'}}>{newPasswordError}</Text>
+            <Text style={styles.alert}>{newPasswordError}</Text>
           )}
           <FormField
             handleOnChangeText={handleChange('confirmPassword')}
@@ -85,7 +77,7 @@ export const SignUp = ({navigation}) => {
             isValidate={confirmPasswordError}
           />
           {confirmPasswordError && (
-            <Text style={{color: 'red'}}>{confirmPasswordError}</Text>
+            <Text style={styles.alert}>{confirmPasswordError}</Text>
           )}
 
           <TouchableOpacity
@@ -98,7 +90,7 @@ export const SignUp = ({navigation}) => {
           </TouchableOpacity>
 
           <View style={styles.footerContainer}>
-            <Text style={{marginBottom: '1%'}}>
+            <Text style={styles.footerGap}>
               {locale.CLAUSE.ALREADY_HAVE_AN_ACCOUNT}
             </Text>
             <TouchableOpacity

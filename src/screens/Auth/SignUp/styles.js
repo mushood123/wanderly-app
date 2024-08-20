@@ -27,6 +27,10 @@ export const styles = StyleSheet.create({
     width: screenDimensions.width * 1,
     resizeMode: 'cover',
   },
+  fieldsContainer: {
+    flex: 0.7,
+    marginHorizontal: 20,
+  },
 
   welcomeText: {
     marginTop: '10%',
@@ -60,6 +64,7 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     backgroundColor: '#293952',
   },
+  footerGap: {marginBottom: '1%'},
   signUpButton: {
     color: 'white',
     textAlign: 'center',
@@ -80,4 +85,5 @@ export const styles = StyleSheet.create({
   test: {
     marginVertical: 12,
   },
+  alert: {color: 'red'},
 });

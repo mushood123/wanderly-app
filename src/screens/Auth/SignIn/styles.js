@@ -69,6 +69,7 @@ export const styles = StyleSheet.create({
     height: 'auto',
     width: 'auto',
   },
+  footerGap: {marginBottom: '1%'},
   footerText: {
     color: '#32CD32',
     fontSize: 15,
