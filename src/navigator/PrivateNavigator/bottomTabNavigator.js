@@ -20,9 +20,7 @@ export const BottomTabNavigator = () => {
         component={DashboardHome}
         options={{
           headerShown: false,
-          tabBarIcon: ({focused}) => (
-            <IconDashboard height={30} width={30} focused={focused} />
-          ),
+          tabBarIcon: ({focused}) => <IconDashboard height={30} width={30} />,
         }}
       />
       <Tab.Screen
@@ -30,9 +28,7 @@ export const BottomTabNavigator = () => {
         component={TopTabNavigator}
         options={{
           headerShown: false,
-          tabBarIcon: ({focused}) => (
-            <IconPackages height={30} width={30} focused={focused} />
-          ),
+          tabBarIcon: ({focused}) => <IconPackages height={30} width={30} />,
         }}
       />
       <Tab.Screen
@@ -40,9 +36,7 @@ export const BottomTabNavigator = () => {
         component={ProfileHome}
         options={{
           headerShown: false,
-          tabBarIcon: ({focused}) => (
-            <IconProfile height={30} width={30} focused={focused} />
-          ),
+          tabBarIcon: ({focused}) => <IconProfile height={30} width={30} />,
         }}
       />
       <Tab.Screen
@@ -50,9 +44,7 @@ export const BottomTabNavigator = () => {
         component={Checkout}
         options={{
           headerShown: false,
-          tabBarIcon: ({focused}) => (
-            <IconPayment height={30} width={30} focused={focused} />
-          ),
+          tabBarIcon: ({focused}) => <IconPayment height={30} width={30} />,
         }}
       />
     </Tab.Navigator>
