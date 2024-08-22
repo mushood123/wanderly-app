@@ -1,13 +1,18 @@
 import React from 'react';
-import {TouchableOpacity, View} from 'react-native';
 import {Text} from '../Text';
-import {styles} from './styles';
 import {
   CardContainer,
   CardContent,
   UserContent,
   UserName,
   Separator,
+  PackageContainer,
+  PackageHeadings,
+  PackageDetails,
+  PackageDetailsWithMargin,
+  TextCenter,
+  ButtonContainer,
+  ButtonText,
 } from './styles';
 import {useSelector} from 'react-redux';
 
@@ -34,39 +39,35 @@ export const Card = ({
           <Text>{place}</Text>
         </UserContent>
         <Separator />
-
-        <View style={styles.stats}>
-          <Text style={styles.statValue}>{locale.CLAUSE.VISITING_PLACES}</Text>
-
+        <PackageContainer>
+          <PackageHeadings>{locale.CLAUSE.VISITING_PLACES}</PackageHeadings>
           {places.map((place, index) => {
             return (
-              <Text key={index} style={styles.title}>
+              <PackageDetailsWithMargin key={index}>
                 {'-> '}
                 {place}
-              </Text>
+              </PackageDetailsWithMargin>
             );
           })}
-
-          <Text style={styles.stat}>
-            <Text style={styles.statValue}> {locale.CLAUSE.HOURLY_RATE}: </Text>
-            <Text style={styles.statLabel}>{hourlyRate}</Text>
-          </Text>
-        </View>
+          <TextCenter>
+            <PackageHeadings> {locale.CLAUSE.HOURLY_RATE}: </PackageHeadings>
+            <PackageDetails>{hourlyRate}</PackageDetails>
+          </TextCenter>
+        </PackageContainer>
       </CardContent>
       {showButton && (
-        <TouchableOpacity
+        <ButtonContainer
           onPress={() => {
             if (uid === currentUserId) {
               onEditPressed({...offer, packageId});
             } else {
               onBuyPressed(packageId, user.uid);
             }
-          }}
-          style={styles.btn}>
-          <Text style={styles.statValue}>
+          }}>
+          <ButtonText>
             {uid === currentUserId ? locale.LABEL.EDIT : locale.LABEL.BUY}
-          </Text>
-        </TouchableOpacity>
+          </ButtonText>
+        </ButtonContainer>
       )}
     </CardContainer>
   );
