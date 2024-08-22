@@ -29,6 +29,23 @@ export const signUpSchema = Yup.object().shape({
 });
 
 export const PackageSchema = Yup.object().shape({
-  hourlyRate: Yup.number().max(50),
-  places: Yup.string().min(3),
+  hourlyRate: Yup.number().max(500).required('Required'),
+  places: Yup.string().required('Required'),
+});
+
+export const userProfileSchema = Yup.object().shape({
+  name: Yup.string()
+    .test(name => name.trim().length > 0)
+    .required('Required'),
+  age: Yup.number()
+    .min(18, 'too young')
+    .max(100, 'too old')
+    .required('Required'),
+  experience: Yup.number()
+    .min(1, 'too less')
+    .max(100, 'too much')
+    .required('Required'),
+  phone: Yup.string()
+    .required('Required')
+    .matches(/^\d+$/, 'The field must contain only numbers'),
 });

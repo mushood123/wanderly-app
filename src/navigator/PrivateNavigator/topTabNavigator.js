@@ -17,7 +17,7 @@ import {AuthContext} from '../../contexts';
 const Tab = createMaterialTopTabNavigator();
 
 export const TopTabNavigator = () => {
-  const {user, Setuser} = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   const {locale} = useContext(LanguageContext);
   const {modalVisibility, setModalVisibility} = useContext(PackagesContext);
   const form = useFormik(formInit);
@@ -73,11 +73,12 @@ export const TopTabNavigator = () => {
           </TouchableOpacity>
 
           <TouchableOpacity
+            disabled={errors?.hourlyRate || errors?.places}
             onPress={() => {
               firebase.createOffer(
                 user.uid,
                 packageDetails,
-                JSON.stringify(user),
+                JSON.parse(JSON.stringify(user)),
               );
               setModalVisibility(!modalVisibility);
             }}

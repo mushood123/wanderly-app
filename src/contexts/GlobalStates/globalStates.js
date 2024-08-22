@@ -7,8 +7,10 @@ import {language} from '../../locales';
 import {PackagesContext} from '../packages';
 
 export const GlobalStates = ({children}) => {
+  const [loading, setLoading] = useState(true);
   const [locale, setLocale] = useState(getDeviceLanguage());
   const [allOffers, setAllOffers] = useState([]);
+  const [acceptedPackage, setAcceptedPackage] = useState([]);
   const [createdOffer, setCreatedOffers] = useState([]);
   const [user, setUser] = useState(null);
   const [modalVisibility, setModalVisibility] = useState(false);
@@ -16,7 +18,13 @@ export const GlobalStates = ({children}) => {
   useEffect(() => {
     const getUser = () => {
       firebase.onAuthStateChanged(user => {
-        setUser(user);
+        const _u = JSON.stringify(user);
+        firebase.getUser(user.uid, {
+          successCB: _user => {
+            setUser({...JSON.parse(_u), ..._user});
+            setLoading(false);
+          },
+        });
       });
     };
     getUser();
@@ -33,8 +41,11 @@ export const GlobalStates = ({children}) => {
             setCreatedOffers,
             modalVisibility,
             setModalVisibility,
+            acceptedPackage,
+            setAcceptedPackage,
           }}>
-          {Children.map(children, child => cloneElement(child, {user}))}
+          {loading === false &&
+            Children.map(children, child => cloneElement(child, {user}))}
         </PackagesContext.Provider>
       </AuthContext.Provider>
     </LanguageContext.Provider>
