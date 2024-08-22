@@ -32,10 +32,13 @@ export const signInWithEmailAndPassword = ({
     });
 };
 
-export const signOut = () => {
+export const signOut = successCB => {
   auth()
     .signOut()
-    .then(() => console.log('User signed out!'));
+    .then(() => {
+      successCB();
+      console.log('User signed out!');
+    });
 };
 
 export const onAuthStateChanged = callBack => {

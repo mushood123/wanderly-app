@@ -7,6 +7,7 @@ import {firebase} from '../../../firebase';
 
 export const OffersByMe = () => {
   const {user} = useContext(AuthContext);
+  const {userData} = user;
 
   const {createdOffer, setCreatedOffers} = useContext(PackagesContext);
   useEffect(() => {
@@ -25,6 +26,7 @@ export const OffersByMe = () => {
           const {packageDetails} = createdOffer[packageId];
           return (
             <Card
+              name={userData?.name}
               showButton
               uid={user.uid}
               currentUserId={user.uid}
