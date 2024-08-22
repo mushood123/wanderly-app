@@ -10,7 +10,6 @@ import {
 } from '../../../utils';
 import {AuthContext} from '../../../contexts';
 import {Text} from '../../../components';
-import {ROUTES} from '../../../navigator';
 import {LanguageContext} from '../../../contexts';
 
 export const Home = ({navigation, route}) => {

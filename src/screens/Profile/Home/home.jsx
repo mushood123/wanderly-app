@@ -12,6 +12,7 @@ import {IconAvatar, IconCross, IconLogo, IconTick} from '../../../assets';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import LottieView from 'lottie-react-native';
 import {animLoader} from '../../../assets';
+import {CardField, CardForm, useStripe} from '@stripe/stripe-react-native';
 
 export const Home = ({navigation}) => {
   const {user, setUser} = useContext(AuthContext);
@@ -20,10 +21,8 @@ export const Home = ({navigation}) => {
   const form = useFormik(formInit(user?.userData || {}));
   const {values, errors, handleChange} = form;
   const [imageLoader, setImageLoader] = useState(false);
-
-  useEffect(() => {
-    return () => {};
-  }, []);
+  const [cardData, setCardData] = useState();
+  const stripe = useStripe();
 
   const confirmPressed = useCallback(() => {
     firebase.setUser(
@@ -42,12 +41,30 @@ export const Home = ({navigation}) => {
     );
   }, [values, user]);
 
+  // const setProfilePic = useCallback(
+  //   async (useCamera = false) => {
+  //     const cardToken = await stripe.createToken({
+  //       type: 'Card',
+  //     });
+  //     console.log(JSON.stringify(cardToken));
+  //     // const {assets} = useCamera
+  //     //   ? await launchCamera()
+  //     //   : await launchImageLibrary();
+  //     // if (assets.length > 0) {
+  //     //   if (assets[0].type == 'image/jpg') {
+  //     //     setImage(assets[0]?.uri || '');
+  //     //   }
+  //     // }
+  //   },
+  //   [image],
+  // );
+
   const setProfilePic = useCallback(
     async (useCamera = false) => {
-      const {assets} = useCamera
+      const {assets = []} = useCamera
         ? await launchCamera()
         : await launchImageLibrary();
-      if (assets.length > 0) {
+      if (assets?.length > 0) {
         if (assets[0].type == 'image/jpg') {
           setImage(assets[0]?.uri || '');
         }
@@ -58,29 +75,21 @@ export const Home = ({navigation}) => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <IconLogo style={{alignSelf: 'center'}} height={100} />
-      <View style={{alignSelf: 'center'}}>
+      <IconLogo style={styles.logo} height={100} />
+      <View style={styles.profilePicContainer}>
         {imageLoader ? (
           <>
             <LottieView
               source={animLoader}
               autoPlay
               loop
-              style={{width: 200, height: 200, alignSelf: 'center'}}
+              style={styles.profilePicLoader}
             />
           </>
         ) : image || user?.userData?.profileImage ? (
           <>
             <Image
-              style={{
-                height: 250,
-                width: 250,
-                backgroundColor: 'grey',
-                borderRadius: 250 / 2,
-                marginBottom: 30,
-                borderWidth: 5,
-                borderColor: '#FFFFFF',
-              }}
+              style={styles.profilePic}
               source={{uri: image || user?.userData?.profileImage}}
             />
             {image && (
@@ -89,7 +98,7 @@ export const Home = ({navigation}) => {
                   onPress={() => {
                     setImage('');
                   }}
-                  style={{position: 'absolute', top: 20, right: 20}}>
+                  style={styles.profilePicReject}>
                   <IconCross height={40} width={40} />
                 </TouchableOpacity>
                 <TouchableOpacity
@@ -104,7 +113,7 @@ export const Home = ({navigation}) => {
                       },
                     });
                   }}
-                  style={{position: 'absolute', bottom: 50, right: 20}}>
+                  style={styles.profilePicAccept}>
                   <IconTick height={40} width={40} />
                 </TouchableOpacity>
               </>
@@ -121,7 +130,9 @@ export const Home = ({navigation}) => {
         disabled={
           errors?.age || errors?.name || errors?.experience || errors?.phone
         }>
-        <Text style={styles.buttonText}>{'Select Image from Libray'}</Text>
+        <Text style={styles.buttonText}>
+          {locale.CLAUSE.SELECT_IMAGE_FROM_GALLERY}
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => setProfilePic(true)}
@@ -129,7 +140,9 @@ export const Home = ({navigation}) => {
         disabled={
           errors?.age || errors?.name || errors?.experience || errors?.phone
         }>
-        <Text style={styles.buttonText}>{'Select Image from Camera'}</Text>
+        <Text style={styles.buttonText}>
+          {locale.CLAUSE.SELECT_IMAGE_FROM_CAMERA}
+        </Text>
       </TouchableOpacity>
       <FormField value={user?.email} disable style={styles.formField} />
       <FormField

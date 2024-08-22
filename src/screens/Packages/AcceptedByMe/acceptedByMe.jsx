@@ -1,5 +1,5 @@
-import React, {useContext, useEffect, useState, useCallback} from 'react';
-import {ScrollView, TouchableOpacity, Text} from 'react-native';
+import React, {useContext, useEffect} from 'react';
+import {ScrollView} from 'react-native';
 import {styles} from './styles';
 import {AuthContext, PackagesContext} from '../../../contexts';
 import {firebase} from '../../../firebase';

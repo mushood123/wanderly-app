@@ -76,13 +76,9 @@ export const getCurrentUserAcceptedOffers = (uid, {successCB}) => {
     .orderByChild(`acceptedBy/${uid}`)
     .equalTo(true)
     .on('value', snapshot => {
-      if (snapshot.exists()) {
-        const orders = snapshot.val();
-        console.log('Orders:', orders);
-        successCB(orders);
-      } else {
-        console.log('No orders found');
-      }
+      const orders = snapshot.val();
+      console.log('Orders:', orders);
+      successCB(orders);
     });
 };
 

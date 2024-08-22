@@ -1,3 +1,5 @@
+import {Checkout} from '../screens';
+
 export const ROUTES = {
   BottomTabNavigator: 'BottomTabNavigator',
   SignIn: 'SignIn',
@@ -5,7 +7,8 @@ export const ROUTES = {
   Dashboard: 'Dashboard',
   Packages: 'Packages',
   Profile: 'Profile',
-  allOffers: 'All Offers',
-  createdOffers: 'Created Offers',
-  acceptedOffers: 'Accepted Offers',
+  AllOffers: 'All Offers',
+  CreatedOffers: 'Created Offers',
+  AcceptedOffers: 'Accepted Offers',
+  Checkout: 'Checkout',
 };
