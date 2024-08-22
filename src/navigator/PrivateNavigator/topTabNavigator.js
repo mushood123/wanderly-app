@@ -82,17 +82,7 @@ export const TopTabNavigator = () => {
               );
               setModalVisibility(!modalVisibility);
             }}
-            style={{
-              position: 'absolute',
-              backgroundColor: 'white',
-              width: 50,
-              right: 30,
-              bottom: 320,
-              height: 50,
-              borderRadius: 25,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
+            style={styles.addCreatePackage}>
             <Text style={{fontSize: 40, color: 'green'}}>+</Text>
           </TouchableOpacity>
         </View>

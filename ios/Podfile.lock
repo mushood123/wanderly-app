@@ -1045,7 +1045,7 @@ PODS:
     - React-Core
   - react-native-maps (1.17.3):
     - React-Core
-  - react-native-pager-view (6.3.3):
+  - react-native-pager-view (6.3.4):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1298,20 +1298,22 @@ PODS:
     - React-perflogger (= 0.74.3)
     - React-utils (= 0.74.3)
   - RecaptchaInterop (100.0.0)
-  - RNFBApp (20.3.0):
+  - RNBootSplash (6.1.1):
+    - React-Core
+  - RNFBApp (20.4.0):
     - Firebase/CoreOnly (= 10.29.0)
     - React-Core
-  - RNFBAuth (20.3.0):
+  - RNFBAuth (20.4.0):
     - Firebase/Auth (= 10.29.0)
     - React-Core
     - RNFBApp
-  - RNFBDatabase (20.3.0):
+  - RNFBDatabase (20.4.0):
     - Firebase/Database (= 10.29.0)
     - React-Core
     - RNFBApp
   - RNPermissions (4.1.5):
     - React-Core
-  - RNScreens (3.33.0):
+  - RNScreens (3.34.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1398,6 +1400,7 @@ DEPENDENCIES:
   - React-runtimescheduler (from `../node_modules/react-native/ReactCommon/react/renderer/runtimescheduler`)
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNBootSplash (from `../node_modules/react-native-bootsplash`)
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBAuth (from `../node_modules/@react-native-firebase/auth`)"
   - "RNFBDatabase (from `../node_modules/@react-native-firebase/database`)"
@@ -1543,6 +1546,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/react/utils"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNBootSplash:
+    :path: "../node_modules/react-native-bootsplash"
   RNFBApp:
     :path: "../node_modules/@react-native-firebase/app"
   RNFBAuth:
@@ -1604,7 +1609,7 @@ SPEC CHECKSUMS:
   react-native-geolocation: 3d05370e569784e95cd8a4f75713c9ab42b0f038
   react-native-google-maps: 4fcc7464c6e1337af1463af6813466a1f6ebee8a
   react-native-maps: 5d563f21238f8e8fea24ae6ff2772bfde17f6f34
-  react-native-pager-view: ffcd8fbc1edcc103a1d9dab390dfb695764d5ac7
+  react-native-pager-view: be07c83460060264af9d76e7efda738852e1d429
   react-native-safe-area-context: b7daa1a8df36095a032dff095a1ea8963cb48371
   React-nativeconfig: 84806b820491db30175afbf027e99e8415dc63f0
   React-NativeModulesApple: 7b79212f8cf496ab554e0b7b09acbd4aa4690260
@@ -1630,14 +1635,15 @@ SPEC CHECKSUMS:
   React-utils: 6f7ac39d9a0de447d4334bb25d144a28c0c5d8c9
   ReactCommon: 4a09c7d8a06e93c1e2e988a3b9f3db3d2449f2fc
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
-  RNFBApp: 793adb33298db7e67dc365dc1ec0dc8a55a7a044
-  RNFBAuth: e923d3f87088009ac8505140599ec1e784d77bd0
-  RNFBDatabase: 2f80e39b4042387410f351a4640f975d83ee3fa7
+  RNBootSplash: 5951974a5271183d06d3279bd4b9d7d093f4e2fc
+  RNFBApp: 10819a4f67d634fe34aa607c6d1e8a8aef019308
+  RNFBAuth: 43dea92a17ffa9481029a50df0e8c50943ec495a
+  RNFBDatabase: 3d8389711ebaeb101d578d85ec086e461cbf8c8e
   RNPermissions: a4c964f030841f35d918ab3248df9dec9db5f44d
-  RNScreens: 7868e19bb8b7643a990fd7a7e037796c4c9b4ff9
+  RNScreens: db442e7b8c7bc8befec2ce057927305ff8598cc8
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Yoga: bd92064a0d558be92786820514d74fc4dddd1233
 
 PODFILE CHECKSUM: 9707b9795ecc288a6ee7ccec5b2a2122ff313a6a
 
-COCOAPODS: 1.14.3
+COCOAPODS: 1.15.2
