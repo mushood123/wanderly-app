@@ -20,6 +20,7 @@ export const requestLocationPermissions = () => {
   requestMultiple(permissionParam.location[Platform.OS])
     .then(result => {
       requestGeolocationRequestAuthorization();
+      //   console.log('result', result);
     })
     .catch(error => {
       console.log('Error', error);

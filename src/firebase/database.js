@@ -10,23 +10,6 @@ export const userRef = id => {
   return reference;
 };
 
-export const OrderRef = id => {
-  const reference = database().ref(`orders/${id}`);
-  return reference;
-};
-export const getOrder = (id, {successCB}) => {
-  database()
-    .ref(`orders/${id}`)
-    .on('value', snapshot => successCB(snapshot.val()));
-};
-
-export const setOrder = (id, data, {successCB}) => {
-  OrderRef(id)
-    .child('packageDetails')
-    .set(data)
-    .then(() => successCB());
-};
-
 export const getUser = (id, {successCB}) => {
   database()
     .ref(`users/${id}`)
@@ -63,6 +46,7 @@ export const getOffersCloseConnection = CB => {
 };
 
 export const getCurrentUserCreatedOffers = (uid, {successCB}) => {
+  console.log('LLLL', uid);
   database()
     .ref('orders')
     .orderByChild('uid')

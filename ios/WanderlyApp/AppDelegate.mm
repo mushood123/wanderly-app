@@ -1,7 +1,6 @@
 #import "AppDelegate.h"
 #import <Firebase.h>
 #import <GoogleMaps/GoogleMaps.h>
-#import "RNBootSplash.h"
 
 #import <React/RCTBundleURLProvider.h>
 
@@ -17,10 +16,6 @@
   self.initialProps = @{};
 
   return [super application:application didFinishLaunchingWithOptions:launchOptions];
-}
-
-- (void)customizeRootView:(RCTRootView *)rootView {
-  [RNBootSplash initWithStoryboard:@"BootSplash" rootView:rootView]; // ⬅️ initialize the splash screen
 }
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge

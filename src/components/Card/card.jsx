@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {Text} from '../Text';
 import {styles} from './styles';
@@ -7,20 +7,29 @@ import {LanguageContext} from '../../contexts';
 export const Card = ({
   hourlyRate = 0,
   places = [],
-  name = 'NA',
-  place = 'Lahore',
+  name = 'Jane Doe',
   currentUserId = 0,
   uid,
-  showButton,
+  showButton = false,
 }) => {
   const {locale} = useContext(LanguageContext);
 
+  const designers = [
+    {
+      name: 'David Borg',
+      title: 'Flying wings',
+      popularity: 2342,
+      likes: 4736,
+      followers: 136,
+      ranking: 1,
+    },
+  ];
   return (
     <View style={styles.card}>
       <View style={styles.header}>
         <View style={styles.content}>
-          <Text style={styles.name}>{name}</Text>
-          <Text>{place}</Text>
+          <Text style={styles.name}>{designers[0].name}</Text>
+          <Text>City of user</Text>
         </View>
         <View style={styles.saperator} />
 
@@ -42,6 +51,7 @@ export const Card = ({
           </Text>
         </View>
       </View>
+      {console.log(currentUserId, uid)}
       {showButton && (
         <TouchableOpacity
           style={{

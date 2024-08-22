@@ -13,7 +13,7 @@ import {Text} from '../../../components';
 import {ROUTES} from '../../../navigator';
 
 export const Home = ({navigation, route}) => {
-  const {user, setUser} = useContext(AuthContext);
+  const {user} = useContext(AuthContext);
   const [location, setLocation] = useState({
     latitude: 37.78825,
     longitude: -122.4324,
@@ -79,9 +79,7 @@ export const Home = ({navigation, route}) => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
-          firebase.signOut(() => {
-            setUser(null);
-          });
+          firebase.signOut();
         }}
         style={{
           backgroundColor: 'orange',
