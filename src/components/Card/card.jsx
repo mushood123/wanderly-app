@@ -1,8 +1,9 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {Text} from '../Text';
 import {styles} from './styles';
 import {LanguageContext} from '../../contexts';
+import {AuthContext} from '../../contexts';
 
 export const Card = ({
   hourlyRate = 0,
@@ -12,9 +13,13 @@ export const Card = ({
   currentUserId = 0,
   uid,
   showButton,
+  onEditPressed = () => {},
+  onBuyPressed = () => {},
+  packageId,
+  offer,
 }) => {
+  const {user} = useContext(AuthContext);
   const {locale} = useContext(LanguageContext);
-
   return (
     <View style={styles.card}>
       <View style={styles.header}>
@@ -27,9 +32,9 @@ export const Card = ({
         <View style={styles.stats}>
           <Text style={styles.statValue}>{locale.CLAUSE.VISITING_PLACES}</Text>
 
-          {places.map(place => {
+          {places.map((place, index) => {
             return (
-              <Text style={styles.title}>
+              <Text key={index} style={styles.title}>
                 {'-> '}
                 {place}
               </Text>
@@ -44,16 +49,16 @@ export const Card = ({
       </View>
       {showButton && (
         <TouchableOpacity
-          style={{
-            backgroundColor: 'white',
-            borderRadius: 10,
-            paddingVertical: 20,
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginVertical: 10,
-          }}>
+          onPress={() => {
+            if (uid === currentUserId) {
+              onEditPressed({...offer, packageId});
+            } else {
+              onBuyPressed(packageId, user.uid);
+            }
+          }}
+          style={styles.btn}>
           <Text style={styles.statValue}>
-            {uid === currentUserId ? 'Edit' : 'Buy'}
+            {uid === currentUserId ? locale.LABEL.EDIT : locale.LABEL.BUY}
           </Text>
         </TouchableOpacity>
       )}

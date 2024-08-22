@@ -11,9 +11,11 @@ import {
 import {AuthContext} from '../../../contexts';
 import {Text} from '../../../components';
 import {ROUTES} from '../../../navigator';
+import {LanguageContext} from '../../../contexts';
 
 export const Home = ({navigation, route}) => {
   const {user, setUser} = useContext(AuthContext);
+  const {locale} = useContext(LanguageContext);
   const [location, setLocation] = useState({
     latitude: 37.78825,
     longitude: -122.4324,
@@ -60,41 +62,15 @@ export const Home = ({navigation, route}) => {
         style={styles.map}
         region={location}
       />
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate(ROUTES.Packages);
-        }}
-        style={{
-          backgroundColor: 'orange',
-          alignItems: 'center',
-          justifyContent: 'center',
-          position: 'absolute',
-          bottom: 120,
-          left: 10,
-          height: 60,
-          width: 60,
-          borderRadius: 30,
-        }}>
-        <Text>PACKAGES</Text>
-      </TouchableOpacity>
+
       <TouchableOpacity
         onPress={() => {
           firebase.signOut(() => {
             setUser(null);
           });
         }}
-        style={{
-          backgroundColor: 'orange',
-          alignItems: 'center',
-          justifyContent: 'center',
-          position: 'absolute',
-          bottom: 45,
-          left: 10,
-          height: 60,
-          width: 60,
-          borderRadius: 30,
-        }}>
-        <Text>LOGOUT</Text>
+        style={styles.logout}>
+        <Text>{locale.LABEL.LOGOUT}</Text>
       </TouchableOpacity>
     </View>
   );

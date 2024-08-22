@@ -13,6 +13,7 @@ import {FormField} from '../../components';
 import {formInit} from './utils';
 import {useFormik} from 'formik';
 import {AuthContext} from '../../contexts';
+import {IconCreatePackage} from '../../assets';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -52,14 +53,14 @@ export const TopTabNavigator = () => {
         }}>
         <View style={styles.modalContainer}>
           <FormField
-            title={'Set Hourly Rate'}
+            title={locale.CLAUSE.SET_HOURLY_RATE}
             style={{marginBottom: 10}}
             value={values.hourlyRate}
             handleOnChangeText={handleChange('hourlyRate')}
             isValidate={errors?.hourlyRate}
           />
           <FormField
-            title={'Enter Place to Visit'}
+            title={locale.CLAUSE.ENTER_PLACE_TO_VIST}
             value={values.places}
             handleOnChangeText={handleChange('places')}
             isValidate={errors?.places}
@@ -92,9 +93,7 @@ export const TopTabNavigator = () => {
           setModalVisibility(!modalVisibility);
         }}
         style={styles.createPackageContainer}>
-        <Text style={{color: 'red', fontSize: 20}}>
-          {locale.CLAUSE.CREATE_PACKAGE}
-        </Text>
+        <IconCreatePackage height={40} width={40} />
       </TouchableOpacity>
     </>
   );

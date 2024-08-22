@@ -3,8 +3,9 @@ import {font} from '../../../theme/fonts';
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     backgroundColor: '#576dd7',
+    paddingVertical: 60,
   },
   formField: {
     margin: 10,

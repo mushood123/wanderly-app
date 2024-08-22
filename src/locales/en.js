@@ -8,6 +8,8 @@ export const CLAUSE = {
   CREATE_PACKAGE: 'Create Package',
   VISITING_PLACES: 'Visiting Places',
   HOURLY_RATE: 'Hourly Rate',
+  SET_HOURLY_RATE: 'Set Hourly Rate',
+  ENTER_PLACE_TO_VIST: 'Enter Place to Visit',
 };
 
 export const LABEL = {
@@ -18,4 +20,12 @@ export const LABEL = {
   NEW_PASSWORD: 'New Password',
   CONFIRM_PASSWORD: 'Confirm Password',
   PASSWORD: 'Password',
+  EDIT: 'Edit',
+  BUY: 'Buy',
+  LOGOUT: 'LOGOUT',
+  NAME: 'Name',
+  AGE: 'Age',
+  PHONE: 'Phone',
+  EXPERIENCE: 'Experience',
+  CONFIRM: 'Confirm',
 };

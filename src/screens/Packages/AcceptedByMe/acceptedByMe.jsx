@@ -1,9 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {ScrollView} from 'react-native';
+import React, {useContext, useEffect, useState, useCallback} from 'react';
+import {ScrollView, TouchableOpacity, Text} from 'react-native';
 import {styles} from './styles';
 import {AuthContext, PackagesContext} from '../../../contexts';
-
-import {LanguageContext} from '../../../contexts';
 import {firebase} from '../../../firebase';
 import {Card} from '../../../components';
 
@@ -24,10 +22,13 @@ export const AcceptedByMe = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {acceptedPackage &&
-        Object.keys(acceptedPackage).map(packageId => {
-          const {packageDetails, uid} = acceptedPackage[packageId];
+        Object.keys(acceptedPackage).map((packageId, index) => {
+          const {packageDetails, uid, profile} = acceptedPackage[packageId];
+          const {userData} = profile;
           return (
             <Card
+              key={`${packageId}_${index}_accepted`}
+              name={userData?.name}
               showButton={false}
               uid={uid}
               currentUserId={user.uid}

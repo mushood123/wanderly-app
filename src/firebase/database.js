@@ -75,5 +75,30 @@ export const getCurrentUserAcceptedOffers = (uid, {successCB}) => {
     .ref('orders')
     .orderByChild(`acceptedBy/${uid}`)
     .equalTo(true)
-    .on('value', snapshot => successCB(snapshot.val()));
+    .on('value', snapshot => {
+      if (snapshot.exists()) {
+        const orders = snapshot.val();
+        console.log('Orders:', orders);
+        successCB(orders);
+      } else {
+        console.log('No orders found');
+      }
+    });
+};
+
+export const setCurrentUserAcceptedOffers = (pid, uid) => {
+  database().ref(`orders/${pid}/acceptedBy/${uid}`).set(true);
+  console.log('called');
+};
+
+export const deleteCurrentUserCreatedOffer = pid => {
+  database()
+    .ref(`orders/${pid}`)
+    .remove()
+    .then(() => {
+      console.log(`${pid} removed successfully`);
+    })
+    .catch(error => {
+      console.error('Error removing order:', error);
+    });
 };

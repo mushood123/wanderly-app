@@ -1,10 +1,14 @@
 import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
+  container: {
+    flexGrow: 1,
+  },
   createPackageContainer: {
     position: 'absolute',
-    right: 10,
+    right: 0,
     bottom: 10,
+    backgroundColor: 'yellow',
   },
   createPackage: {color: 'red', fontSize: 20},
   modalContainer: {
@@ -24,7 +28,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  x: {color: 'red', fontSize: 25},
+  x: {color: 'red', fontSize: 20},
   addCreatePackage: {
     position: 'absolute',
     backgroundColor: 'white',

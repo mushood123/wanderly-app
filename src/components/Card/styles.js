@@ -72,4 +72,12 @@ export const styles = StyleSheet.create({
     backgroundColor: '#918d8d',
     marginHorizontal: 10,
   },
+  btn: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    paddingVertical: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: 10,
+  },
 });
