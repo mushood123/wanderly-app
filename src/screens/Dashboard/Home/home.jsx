@@ -1,4 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {styles} from './styles';
@@ -8,13 +8,14 @@ import {
   getGeolocationWatchPosition,
   requestLocationPermissions,
 } from '../../../utils';
-import {AuthContext} from '../../../contexts';
 import {Text} from '../../../components';
-import {LanguageContext} from '../../../contexts';
+import {useDispatch, useSelector} from 'react-redux';
+import {setUser} from '../../../redux/Auth';
 
 export const Home = ({navigation, route}) => {
-  const {user, setUser} = useContext(AuthContext);
-  const {locale} = useContext(LanguageContext);
+  const {user} = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+  const {locale} = useSelector(state => state.language);
   const [location, setLocation] = useState({
     latitude: 37.78825,
     longitude: -122.4324,
@@ -65,7 +66,7 @@ export const Home = ({navigation, route}) => {
       <TouchableOpacity
         onPress={() => {
           firebase.signOut(() => {
-            setUser(null);
+            dispatch(setUser(null));
           });
         }}
         style={styles.logout}>

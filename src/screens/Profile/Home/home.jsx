@@ -1,28 +1,30 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {styles} from './styles';
-import {AuthContext} from '../../../contexts';
 import {FormField, Text} from '../../../components';
 import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
 import {useFormik} from 'formik';
 import {formInit} from './utils';
 import {ROUTES} from '../../../navigator';
 import {firebase} from '../../../firebase';
-import {LanguageContext} from '../../../contexts';
+
 import {IconAvatar, IconCross, IconLogo, IconTick} from '../../../assets';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import LottieView from 'lottie-react-native';
 import {animLoader} from '../../../assets';
 import {CardField, CardForm, useStripe} from '@stripe/stripe-react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {setUser} from '../../../redux/Auth';
 
 export const Home = ({navigation}) => {
-  const {user, setUser} = useContext(AuthContext);
+  const {user} = useSelector(state => state.auth);
   const [image, setImage] = useState('');
-  const {locale} = useContext(LanguageContext);
+  const {locale} = useSelector(state => state.language);
   const form = useFormik(formInit(user?.userData || {}));
   const {values, errors, handleChange} = form;
   const [imageLoader, setImageLoader] = useState(false);
-  const [cardData, setCardData] = useState();
+
   const stripe = useStripe();
+  const dispatch = useDispatch();
 
   const confirmPressed = useCallback(() => {
     firebase.setUser(
@@ -109,7 +111,7 @@ export const Home = ({navigation}) => {
                         setImage('');
                         setImageLoader(false);
                         console.log('_updatedUser', _updatedUser);
-                        setUser(_updatedUser);
+                        dispatch(setUser(null));
                       },
                     });
                   }}

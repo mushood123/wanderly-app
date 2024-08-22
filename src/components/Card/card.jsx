@@ -1,9 +1,7 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {Text} from '../Text';
 import {styles} from './styles';
-import {LanguageContext} from '../../contexts';
-import {AuthContext} from '../../contexts';
 import {
   CardContainer,
   CardContent,
@@ -11,6 +9,7 @@ import {
   UserName,
   Separator,
 } from './styles';
+import {useSelector} from 'react-redux';
 
 export const Card = ({
   hourlyRate = 0,
@@ -25,8 +24,8 @@ export const Card = ({
   packageId,
   offer,
 }) => {
-  const {user} = useContext(AuthContext);
-  const {locale} = useContext(LanguageContext);
+  const {user} = useSelector(state => state.auth);
+  const {locale} = useSelector(state => state.language);
   return (
     <CardContainer>
       <CardContent>

@@ -4,8 +4,7 @@ import {styles} from './styles';
 import {CardForm} from '@stripe/stripe-react-native';
 import {Button} from '../../../components';
 import {initStripe} from '@stripe/stripe-react-native';
-import {useSelector, useDispatch} from 'react-redux';
-import {increment, decrement} from '../../../../counterSlice';
+import {useSelector} from 'react-redux';
 
 const STRIPE_PUBLISHABLE_KEY = 'pk_test_4w4O2cKeqIBDIzucoUBDOKYO';
 
@@ -13,8 +12,9 @@ export const Checkout = () => {
   const [cardData, setCardData] = useState(null);
 
   /////////////////////////////////////////////////////////
-  const count = useSelector(state => state.counter?.value);
-  const dispatch = useDispatch();
+  const {user} = useSelector(state => state.auth);
+  const {locale} = useSelector(state => state.language);
+  const {allOffers} = useSelector(state => state.package);
   /////////////////////////////////////////////////////////
   useEffect(() => {
     initStripe({
@@ -39,14 +39,19 @@ export const Checkout = () => {
         }}
       />
       <Button
-        title={`increment ${count}`}
+        title={`user redux`}
         style={{marginVertical: 10}}
-        onPress={() => dispatch(increment(1), console.log(count))}
+        onPress={() => console.log(JSON.stringify(user))}
       />
       <Button
-        title={`decrement ${count}`}
+        title={`language redux`}
         style={{marginVertical: 10}}
-        onPress={() => dispatch(decrement(1), console.log(count))}
+        onPress={() => console.log(locale.LABEL.CONFIRM)}
+      />
+      <Button
+        title={`package redux`}
+        style={{marginVertical: 10}}
+        onPress={() => console.log(allOffers)}
       />
     </View>
   );

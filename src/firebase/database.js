@@ -77,14 +77,13 @@ export const getCurrentUserAcceptedOffers = (uid, {successCB}) => {
     .equalTo(true)
     .on('value', snapshot => {
       const orders = snapshot.val();
-      console.log('Orders:', orders);
+
       successCB(orders);
     });
 };
 
 export const setCurrentUserAcceptedOffers = (pid, uid) => {
   database().ref(`orders/${pid}/acceptedBy/${uid}`).set(true);
-  console.log('called');
 };
 
 export const deleteCurrentUserCreatedOffer = pid => {
