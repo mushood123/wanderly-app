@@ -1,34 +1,36 @@
-import React, {useCallback, useContext, useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
-import {AuthContext, PackagesContext} from '../../../contexts';
 import {Card, EditModal} from '../../../components';
 import {firebase} from '../../../firebase';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 import Reanimated, {useAnimatedStyle} from 'react-native-reanimated';
+import {useDispatch, useSelector} from 'react-redux';
+import {setCreatedOffers, setModalVisibility} from '../../../redux/Packages';
 
 export const OffersByMe = () => {
-  const [modalVisibility, setModalVisibility] = useState(false);
+  const {modalVisibility, createdOffer} = useSelector(state => state.package);
   const [requestedPackage, setRequestedPackage] = useState(null);
-
-  const {createdOffer, setCreatedOffers} = useContext(PackagesContext);
-  const {user} = useContext(AuthContext);
+  const {user} = useSelector(state => state.auth);
   const {userData} = user;
-
+  const dispatch = useDispatch();
   useEffect(() => {
     const onValueChange = firebase.getCurrentUserCreatedOffers(user.uid, {
       successCB: data => {
-        setCreatedOffers(data);
+        dispatch(setCreatedOffers(data));
       },
     });
-    return () => firebase.getOffersCloseConnection(onValueChange);
+    return () => {
+      firebase.getOffersCloseConnection(onValueChange);
+    };
   }, []);
 
   const onEditPressed = useCallback(offer => {
     setRequestedPackage(offer);
-    setModalVisibility(true);
+    dispatch(setModalVisibility(true));
   }, []);
+
   const RightAction = ({prog, drag, packageId}) => {
     const styleAnimation = useAnimatedStyle(() => {
       return {
@@ -58,39 +60,46 @@ export const OffersByMe = () => {
   };
 
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
-      <ScrollView contentContainerStyle={styles.container}>
-        {createdOffer &&
-          Object.keys(createdOffer).map((packageId, index) => {
-            const {packageDetails} = createdOffer[packageId];
-            return (
-              <ReanimatedSwipeable
-                key={`${packageId}_${index}_created`}
-                overshootRight={true}
-                dragOffsetFromRightEdge={10}
-                renderRightActions={(prog, drag) => (
-                  <RightAction prog={prog} drag={drag} packageId={packageId} />
-                )}>
-                <Card
-                  offer={createdOffer[packageId]}
-                  packageId={packageId}
-                  name={userData?.name}
-                  showButton
-                  uid={user.uid}
-                  currentUserId={user.uid}
-                  onEditPressed={onEditPressed}
-                  {...packageDetails}
-                />
-              </ReanimatedSwipeable>
-            );
-          })}
-      </ScrollView>
-      <EditModal
-        modalVisibility={modalVisibility}
-        setModalVisibility={setModalVisibility}
-        requestedPackage={requestedPackage}
-        setRequestedPackage={setRequestedPackage}
-      />
-    </GestureHandlerRootView>
+    <>
+      <GestureHandlerRootView style={{flex: 1}}>
+        <ScrollView contentContainerStyle={styles.container}>
+          {createdOffer &&
+            Object.keys(createdOffer).map((packageId, index) => {
+              const {packageDetails} = createdOffer[packageId];
+              return (
+                <ReanimatedSwipeable
+                  key={`${packageId}_${index}_created`}
+                  overshootRight={true}
+                  dragOffsetFromRightEdge={10}
+                  renderRightActions={(prog, drag) => (
+                    <RightAction
+                      prog={prog}
+                      drag={drag}
+                      packageId={packageId}
+                    />
+                  )}>
+                  <Card
+                    offer={createdOffer[packageId]}
+                    packageId={packageId}
+                    name={userData?.name}
+                    showButton
+                    uid={user.uid}
+                    currentUserId={user.uid}
+                    onEditPressed={onEditPressed}
+                    {...packageDetails}
+                  />
+                </ReanimatedSwipeable>
+              );
+            })}
+        </ScrollView>
+      </GestureHandlerRootView>
+      {requestedPackage && (
+        <EditModal
+          requestedPackage={requestedPackage}
+          setRequestedPackage={setRequestedPackage}
+          isCreateOffer={false}
+        />
+      )}
+    </>
   );
 };

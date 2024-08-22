@@ -1,17 +1,19 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {ScrollView} from 'react-native';
 import {styles} from './styles';
-import {AuthContext, PackagesContext} from '../../../contexts';
 import {firebase} from '../../../firebase';
 import {Card} from '../../../components';
+import {useDispatch, useSelector} from 'react-redux';
+import {setAcceptedPackage} from '../../../redux/Packages';
 
 export const AcceptedByMe = () => {
-  const {user} = useContext(AuthContext);
-  const {acceptedPackage, setAcceptedPackage} = useContext(PackagesContext);
+  const {user} = useSelector(state => state.auth);
+  const {acceptedPackage} = useSelector(state => state.package);
+  const dispatch = useDispatch();
   useEffect(() => {
     const onValueChange = firebase.getCurrentUserAcceptedOffers(user.uid, {
       successCB: data => {
-        setAcceptedPackage(data);
+        dispatch(setAcceptedPackage(data));
       },
     });
     return () => {

@@ -8,15 +8,15 @@ import {
 import {styles} from './styles';
 import {FormField, Text} from '../../../components';
 import {useFormik} from 'formik';
-import {useCallback, useContext} from 'react';
+import {useCallback} from 'react';
 import {formInit, signUpCallback} from './utils';
 import {guide_explain_tourist} from '../../../assets';
-import {LanguageContext} from '../../../contexts';
+
 import {ROUTES} from '../../../navigator';
 
 export const SignUp = ({navigation}) => {
   const form = useFormik(formInit);
-  const {locale} = useContext(LanguageContext);
+  const {locale} = useSelector(state => state.language);
 
   const {values, errors, handleChange} = form;
 

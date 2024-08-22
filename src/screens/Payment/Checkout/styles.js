@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
   },
   containerStyle: {
     width: '80%',
-    height: 170,
+    height: 210,
     marginTop: 100,
   },
 });

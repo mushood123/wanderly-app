@@ -1,14 +1,14 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ROUTES} from '../routes';
 import {BottomTabNavigator} from './bottomTabNavigator';
 import {ProfileHome} from '../../screens';
-import {AuthContext} from '../../contexts';
+import {useSelector} from 'react-redux';
 
 const RootStack = createNativeStackNavigator();
 
 export const PrivateNavigator = () => {
-  const {user} = useContext(AuthContext);
+  const {user} = useSelector(state => state.auth);
   return (
     <RootStack.Navigator
       initialRouteName={

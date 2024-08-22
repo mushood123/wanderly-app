@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {PackagesHome, OffersByMe, AcceptedByMe} from '../../screens';
 import {ROUTES} from '../routes';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
@@ -7,13 +7,14 @@ import {TouchableOpacity} from 'react-native';
 import {EditModal} from '../../components';
 import {styles} from './styles';
 import {IconCreatePackage} from '../../assets';
+import {useDispatch, useSelector} from 'react-redux';
+import {setModalVisibility} from '../../redux/Packages';
 
 const Tab = createMaterialTopTabNavigator();
 
 export const TopTabNavigator = () => {
-  const [modalVisibility, setModalVisibility] = useState(false);
-  const [createOffer, setCreateOffer] = useState();
-
+  const {modalVisibility} = useSelector(state => state.package);
+  const dispatch = useDispatch();
   return (
     <>
       <Tab.Navigator
@@ -26,20 +27,14 @@ export const TopTabNavigator = () => {
         <Tab.Screen name={ROUTES.AcceptedOffers} component={AcceptedByMe} />
         <Tab.Screen name={ROUTES.CreatedOffers} component={OffersByMe} />
       </Tab.Navigator>
-      <EditModal
-        modalVisibility={modalVisibility}
-        setModalVisibility={setModalVisibility}
-        isCreateOffer={true}
-        setCreateOffer={setCreateOffer}
-      />
       <TouchableOpacity
         onPress={() => {
-          console.log(createOffer);
-          setModalVisibility(!modalVisibility);
+          dispatch(setModalVisibility(true));
         }}
         style={styles.createPackageContainer}>
         <IconCreatePackage height={40} width={40} />
       </TouchableOpacity>
+      {modalVisibility && <EditModal isCreateOffer={true} />}
     </>
   );
 };

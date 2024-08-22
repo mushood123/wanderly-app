@@ -5,17 +5,17 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from 'react-native';
-import React, {useCallback, useContext} from 'react';
+import React, {useCallback} from 'react';
 import {styles} from './styles';
 import {FormField, Text} from '../../../components';
 import {useFormik} from 'formik';
 import {guide_explain_tourist} from '../../../assets';
 import {formInit, signInCallback} from './utils';
-import {LanguageContext} from '../../../contexts';
 import {ROUTES} from '../../../navigator';
+import {useSelector} from 'react-redux';
 
 export const SignIn = ({navigation}) => {
-  const {locale} = useContext(LanguageContext);
+  const {locale} = useSelector(state => state.language);
   const form = useFormik(formInit);
 
   const {values, errors, handleChange} = form;

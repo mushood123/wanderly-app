@@ -1,9 +1,15 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {Text} from '../Text';
 import {styles} from './styles';
-import {LanguageContext} from '../../contexts';
-import {AuthContext} from '../../contexts';
+import {
+  CardContainer,
+  CardContent,
+  UserContent,
+  UserName,
+  Separator,
+} from './styles';
+import {useSelector} from 'react-redux';
 
 export const Card = ({
   hourlyRate = 0,
@@ -18,16 +24,16 @@ export const Card = ({
   packageId,
   offer,
 }) => {
-  const {user} = useContext(AuthContext);
-  const {locale} = useContext(LanguageContext);
+  const {user} = useSelector(state => state.auth);
+  const {locale} = useSelector(state => state.language);
   return (
-    <View style={styles.card}>
-      <View style={styles.header}>
-        <View style={styles.content}>
-          <Text style={styles.name}>{name}</Text>
+    <CardContainer>
+      <CardContent>
+        <UserContent>
+          <UserName>{name}</UserName>
           <Text>{place}</Text>
-        </View>
-        <View style={styles.saperator} />
+        </UserContent>
+        <Separator />
 
         <View style={styles.stats}>
           <Text style={styles.statValue}>{locale.CLAUSE.VISITING_PLACES}</Text>
@@ -46,7 +52,7 @@ export const Card = ({
             <Text style={styles.statLabel}>{hourlyRate}</Text>
           </Text>
         </View>
-      </View>
+      </CardContent>
       {showButton && (
         <TouchableOpacity
           onPress={() => {
@@ -62,6 +68,6 @@ export const Card = ({
           </Text>
         </TouchableOpacity>
       )}
-    </View>
+    </CardContainer>
   );
 };

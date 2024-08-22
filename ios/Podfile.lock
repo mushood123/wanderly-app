@@ -1482,7 +1482,7 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNSVG (15.5.0):
+  - RNSVG (15.6.0):
     - React-Core
   - SocketRocket (0.7.0)
   - Stripe (23.28.1):
@@ -1868,7 +1868,7 @@ SPEC CHECKSUMS:
   RNPermissions: a4c964f030841f35d918ab3248df9dec9db5f44d
   RNReanimated: 45f0fd1250364dffec9aabd4a0959f2956a5e78b
   RNScreens: db442e7b8c7bc8befec2ce057927305ff8598cc8
-  RNSVG: b986585e367f4a49d8aa43065066cc9c290b3d9b
+  RNSVG: 5da7a24f31968ec74f0b091e3440080f347e279b
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
   Stripe: 20e24971647daa5750e7764faa1e8aefe4917243
   stripe-react-native: 3479d62b758ac162b4465cb0aed313b525a575f3

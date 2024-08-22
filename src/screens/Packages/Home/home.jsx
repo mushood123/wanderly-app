@@ -1,18 +1,19 @@
-import React, {useContext, useEffect, useCallback} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import {ScrollView} from 'react-native';
 import {styles} from './styles';
-import {AuthContext, PackagesContext} from '../../../contexts';
 import {Card} from '../../../components';
 import {firebase} from '../../../firebase';
+import {useDispatch, useSelector} from 'react-redux';
+import {setAllOffers} from '../../../redux/Packages';
 
 export const Home = () => {
-  const {allOffers, setAllOffers} = useContext(PackagesContext);
-  const {user} = useContext(AuthContext);
-
+  const {allOffers} = useSelector(state => state.package);
+  const {user} = useSelector(state => state.auth);
+  const dispatch = useDispatch();
   useEffect(() => {
     const onValueChange = firebase.getOffers({
       successCB: data => {
-        setAllOffers(data);
+        dispatch(setAllOffers(data));
       },
     });
     return () => {
