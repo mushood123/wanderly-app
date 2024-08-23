@@ -1102,7 +1102,7 @@ PODS:
     - Yoga
   - react-native-maps (1.18.0):
     - React-Core
-  - react-native-pager-view (6.3.4):
+  - react-native-pager-view (6.4.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1833,7 +1833,7 @@ SPEC CHECKSUMS:
   react-native-google-maps: ee48410bb3f1390abfa20592a44db5d6ada83e4d
   react-native-image-picker: 8b791a2bec6da84ca7d8cbcad30da159d6dd6da4
   react-native-maps: 2e6e9896195781327ee15b33e3e84bf73c08207a
-  react-native-pager-view: be07c83460060264af9d76e7efda738852e1d429
+  react-native-pager-view: 0e7eccf87425482499ec20946a4c0efb7cd7bff9
   react-native-safe-area-context: ab8f4a3d8180913bd78ae75dd599c94cce3d5e9a
   React-nativeconfig: 84806b820491db30175afbf027e99e8415dc63f0
   React-NativeModulesApple: 7b79212f8cf496ab554e0b7b09acbd4aa4690260
