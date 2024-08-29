@@ -15,7 +15,7 @@ export const AcceptedByMe = () => {
   }, []);
 
   return (
-    <ScrollContainer>
+    <ScrollContainer $dark={true}>
       {acceptedPackage &&
         Object.keys(acceptedPackage).map((packageId, index) => {
           const {packageDetails, uid, profile} = acceptedPackage[packageId];

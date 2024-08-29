@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
-import {styles} from './styles';
+import {Text, TouchableOpacity, View} from 'react-native';
+import {styles, ScrollContainer} from './styles';
 import {Card} from '~src/components';
 import {EditModal} from '~src/components';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
@@ -57,7 +57,7 @@ export const OffersByMe = () => {
   return (
     <>
       <GestureHandlerRootView style={{flex: 1}}>
-        <ScrollView contentContainerStyle={styles.container}>
+        <ScrollContainer $dark={true}>
           {createdOffer &&
             Object.keys(createdOffer).map((packageId, index) => {
               const {packageDetails} = createdOffer[packageId];
@@ -86,7 +86,7 @@ export const OffersByMe = () => {
                 </ReanimatedSwipeable>
               );
             })}
-        </ScrollView>
+        </ScrollContainer>
       </GestureHandlerRootView>
       {requestedPackage && (
         <EditModal
