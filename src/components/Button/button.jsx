@@ -1,6 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, Text} from 'react-native';
-import {styles} from './styles';
+import {ButtonContainer, ButtonText} from './styles';
 
 export const Button = ({
   onPress,
@@ -10,12 +9,13 @@ export const Button = ({
   disabled = false,
 }) => {
   return (
-    <TouchableOpacity
+    <ButtonContainer
       onPress={onPress}
-      style={[styles.button, style, disabled && styles.disabledButton]}
       activeOpacity={0.7}
-      disabled={disabled}>
-      <Text style={[styles.text, textStyle]}>{title}</Text>
-    </TouchableOpacity>
+      disabled={disabled}
+      $d={disabled}
+      style={style}>
+      <ButtonText style={textStyle}>{title}</ButtonText>
+    </ButtonContainer>
   );
 };

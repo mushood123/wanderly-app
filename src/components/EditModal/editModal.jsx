@@ -1,10 +1,16 @@
 import React, {memo, useCallback} from 'react';
-import {Modal, Text, TouchableOpacity, View} from 'react-native';
+import {Modal} from 'react-native';
 import {FormField} from '../FormField';
 import {useFormik} from 'formik';
 import {formInit} from './utils';
 import {firebase} from '../../firebase';
-import {styles} from './styles';
+import {
+  ModalContainer,
+  CloseModalButton,
+  ModalButtonText,
+  AddPackageButton,
+  ErrorText,
+} from './styles';
 import {useSelector, useDispatch} from 'react-redux';
 import {setModalVisibility} from '../../redux/Packages';
 
@@ -25,7 +31,7 @@ export const EditModal = memo(
           places: requestedPackage.packageDetails?.places?.join(',') || '',
         }
       : {};
-    console.log('EDIT MODAL COMPONENT');
+    console.log('requestedPackageValues', requestedPackageValues);
     const form = useFormik(formInit(requestedPackageValues));
     const {uid} = user;
     const {values, errors, handleChange} = form;
@@ -47,7 +53,6 @@ export const EditModal = memo(
           offerDetails,
           JSON.parse(JSON.stringify(user)),
         );
-        console.log('USER CREATE OFFER', offerDetails);
       } else {
         firebase.setOrder(
           requestedPackage.packageId,
@@ -73,7 +78,8 @@ export const EditModal = memo(
         visible={modalVisibility}
         animationType="slide"
         onRequestClose={handleClose}>
-        <View style={styles.modalContainer}>
+        <ModalContainer>
+          {errors?.hourlyRate && <ErrorText>{errors?.hourlyRate}</ErrorText>}
           <FormField
             title={
               requestedPackageValues.hourlyRate || locale.CLAUSE.SET_HOURLY_RATE
@@ -83,11 +89,7 @@ export const EditModal = memo(
             handleOnChangeText={handleChange('hourlyRate')}
             isValidate={errors?.hourlyRate}
           />
-          {errors?.hourlyRate && (
-            <Text style={{marginVertical: 1, color: 'red'}}>
-              {errors?.hourlyRate}
-            </Text>
-          )}
+          {errors?.places && <ErrorText>{errors?.places}</ErrorText>}
           <FormField
             title={
               requestedPackageValues.places || locale.CLAUSE.ENTER_PLACE_TO_VIST
@@ -96,23 +98,16 @@ export const EditModal = memo(
             handleOnChangeText={handleChange('places')}
             isValidate={errors?.places}
           />
-          {errors?.places && (
-            <Text style={{marginVertical: 10, color: 'red'}}>
-              {errors?.places}
-            </Text>
-          )}
-          <TouchableOpacity
-            onPress={handleClose}
-            style={styles.closeCreatePackage}>
-            <Text style={styles.x}>X</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
+
+          <CloseModalButton onPress={handleClose}>
+            <ModalButtonText $close={true}>x</ModalButtonText>
+          </CloseModalButton>
+          <AddPackageButton
             disabled={errors?.hourlyRate || errors?.places}
-            onPress={handleSubmit}
-            style={styles.addCreatePackage}>
-            <Text style={{fontSize: 40, color: 'green'}}>+</Text>
-          </TouchableOpacity>
-        </View>
+            onPress={handleSubmit}>
+            <ModalButtonText>+</ModalButtonText>
+          </AddPackageButton>
+        </ModalContainer>
       </Modal>
     );
   },

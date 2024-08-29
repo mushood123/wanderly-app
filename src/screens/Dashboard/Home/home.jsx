@@ -2,15 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {styles} from './styles';
-import {firebase} from '../../../firebase';
+import {firebase} from '~src/firebase';
+import {Text} from '~src/components';
+import {useDispatch, useSelector} from 'react-redux';
+import {setUser} from '~src/redux/Auth';
 import {
   clearGeolocationWatchPosition,
   getGeolocationWatchPosition,
-  requestLocationPermissions,
-} from '../../../utils';
-import {Text} from '../../../components';
-import {useDispatch, useSelector} from 'react-redux';
-import {setUser} from '../../../redux/Auth';
+} from '~src/utils/locations';
+import {requestLocationPermissions} from '~src/utils/permissions';
 
 export const Home = ({navigation, route}) => {
   const {user} = useSelector(state => state.auth);

@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
 import {font} from '../../theme/fonts';
 import styled from 'styled-components/native';
+import {Button} from '../Button/button';
 
 export const CardContainer = styled.View.attrs(() => ({
   shadowOffset: {
@@ -38,83 +38,40 @@ export const Separator = styled.View`
   background-color: #918d8d;
   margin-horizontal: 10px;
 `;
-export const styles = StyleSheet.create({
-  card: {
-    backgroundColor: 'powderblue',
-    borderRadius: 10,
-    padding: 15,
-    margin: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-  },
-  avatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-    marginRight: 15,
-  },
-  ranking: {
-    backgroundColor: '#f0f0f0',
-    padding: 5,
-    borderRadius: 5,
-    marginRight: 'auto',
-  },
-  rankingText: {
-    fontWeight: 'bold',
-  },
-  content: {
-    marginBottom: 10,
-  },
-  name: {
-    fontFamily: font.heading,
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  title: {
-    fontSize: 15,
-    marginBottom: 2,
-  },
-  stats: {
-    flexDirection: 'column',
-    marginLeft: 10,
-    justifyContent: 'space-between',
-  },
-  stat: {
-    textAlign: 'center',
-  },
-  statValue: {
-    fontFamily: font.heading,
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 2,
-  },
-  statLabel: {
-    fontSize: 15,
-  },
-  saperator: {
-    height: '100%',
-    width: 1,
-    backgroundColor: '#918d8d',
-    marginHorizontal: 10,
-  },
-  btn: {
-    backgroundColor: 'white',
-    borderRadius: 10,
-    paddingVertical: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginVertical: 10,
-  },
-});
+
+export const PackageContainer = styled.View`
+  flex-direction: column;
+  margin-left: 10px;
+  justify-content: space-between;
+`;
+export const PackageHeadings = styled.Text`
+  font-family: ${font.heading};
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 2px;
+`;
+export const PackageDetails = styled.Text`
+  font-size: 15px;
+`;
+
+export const PackageDetailsWithMargin = styled(PackageDetails)`
+  margin-bottom: 5px;
+`;
+export const TextCenter = styled.Text`
+  text-align: center;
+`;
+
+export const ButtonContainer = styled.TouchableOpacity`
+  background-color: white;
+  border-radius: 10px;
+  padding-vertical: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-vertical: 10px;
+`;
+export const ButtonText = styled.Text`
+  font-family: ${font.heading};
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 2px;
+`;

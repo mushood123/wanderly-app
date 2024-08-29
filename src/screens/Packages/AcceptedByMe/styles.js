@@ -1,7 +1,5 @@
-import {StyleSheet} from 'react-native';
+import styled from 'styled-components/native';
 
-export const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-  },
-});
+export const ScrollContainer = styled.ScrollView`
+  flex-grow: 1;
+`;

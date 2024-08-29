@@ -7,12 +7,12 @@ import {
 } from 'react-native';
 import React, {useCallback} from 'react';
 import {styles} from './styles';
-import {FormField, Text} from '../../../components';
 import {useFormik} from 'formik';
-import {guide_explain_tourist} from '../../../assets';
 import {formInit, signInCallback} from './utils';
-import {ROUTES} from '../../../navigator';
 import {useSelector} from 'react-redux';
+import {FormField, Text} from '~src/components';
+import {ROUTES} from '~src/navigator';
+import {guide_explain_tourist} from '~src/assets';
 
 export const SignIn = ({navigation}) => {
   const {locale} = useSelector(state => state.language);

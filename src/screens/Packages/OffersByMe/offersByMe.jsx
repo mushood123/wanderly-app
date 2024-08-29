@@ -1,29 +1,24 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {styles} from './styles';
-import {Card, EditModal} from '../../../components';
-import {firebase} from '../../../firebase';
+import {Card} from '~src/components';
+import {EditModal} from '~src/components';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import ReanimatedSwipeable from 'react-native-gesture-handler/ReanimatedSwipeable';
 import Reanimated, {useAnimatedStyle} from 'react-native-reanimated';
 import {useDispatch, useSelector} from 'react-redux';
-import {setCreatedOffers, setModalVisibility} from '../../../redux/Packages';
+import {setModalVisibility} from '~src/redux/Packages';
+import {getOfferByMe} from '~src/redux/Packages';
+import {firebase} from '~src/firebase';
 
 export const OffersByMe = () => {
-  const {modalVisibility, createdOffer} = useSelector(state => state.package);
+  const {createdOffer} = useSelector(state => state.package);
   const [requestedPackage, setRequestedPackage] = useState(null);
   const {user} = useSelector(state => state.auth);
   const {userData} = user;
   const dispatch = useDispatch();
   useEffect(() => {
-    const onValueChange = firebase.getCurrentUserCreatedOffers(user.uid, {
-      successCB: data => {
-        dispatch(setCreatedOffers(data));
-      },
-    });
-    return () => {
-      firebase.getOffersCloseConnection(onValueChange);
-    };
+    getOfferByMe(user);
   }, []);
 
   const onEditPressed = useCallback(offer => {

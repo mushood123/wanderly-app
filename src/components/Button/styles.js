@@ -1,20 +1,16 @@
-import {StyleSheet} from 'react-native';
+import styled from 'styled-components/native';
 
-export const styles = StyleSheet.create({
-  button: {
-    backgroundColor: '#007BFF',
-    paddingVertical: 12,
-    paddingHorizontal: 25,
-    borderRadius: 8,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  disabledButton: {
-    backgroundColor: '#A9A9A9',
-  },
-});
+export const ButtonContainer = styled.TouchableOpacity`
+  background-color: ${props => (props.$d ? '#A9A9A9' : '#007BFF')};
+  padding-vertical: 12px;
+  padding-horizontal: 25px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ButtonText = styled.Text`
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+`;

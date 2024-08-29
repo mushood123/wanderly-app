@@ -1,36 +1,27 @@
 import React, {useEffect, useCallback} from 'react';
-import {ScrollView} from 'react-native';
-import {styles} from './styles';
-import {Card} from '../../../components';
-import {firebase} from '../../../firebase';
-import {useDispatch, useSelector} from 'react-redux';
-import {setAllOffers} from '../../../redux/Packages';
+import {ScrollContainer} from './styles';
+import {Card} from '~src/components';
+import {firebase} from '~src/firebase';
+import {useSelector} from 'react-redux';
+import {getAllOffer} from '~src/redux/Packages';
 
 export const Home = () => {
   const {allOffers} = useSelector(state => state.package);
   const {user} = useSelector(state => state.auth);
-  const dispatch = useDispatch();
   useEffect(() => {
-    const onValueChange = firebase.getOffers({
-      successCB: data => {
-        dispatch(setAllOffers(data));
-      },
-    });
-    return () => {
-      firebase.getOffersCloseConnection(onValueChange);
-    };
+    getAllOffer();
   }, []);
   const onBuyPressed = useCallback((pid, uid) => {
     firebase.setCurrentUserAcceptedOffers(pid, uid);
   }, []);
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollContainer>
       {allOffers &&
         Object.keys(allOffers).map((packageId, index) => {
           const {packageDetails, uid, profile} = allOffers[packageId];
           const {userData} = profile;
           return (
-            user.uid !== uid && (
+            user?.uid !== uid && (
               <Card
                 key={`${packageId}_${index}_all`}
                 offer={allOffers[packageId]}
@@ -39,12 +30,12 @@ export const Home = () => {
                 showButton={true}
                 uid={uid}
                 onBuyPressed={onBuyPressed}
-                currentUserId={user.uid}
+                currentUserId={user?.uid}
                 {...packageDetails}
               />
             )
           );
         })}
-    </ScrollView>
+    </ScrollContainer>
   );
 };

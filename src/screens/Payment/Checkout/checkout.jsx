@@ -1,21 +1,25 @@
-import {View, Text} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {styles} from './styles';
-import {CardForm} from '@stripe/stripe-react-native';
-import {Button} from '../../../components';
-import {initStripe} from '@stripe/stripe-react-native';
-import {useSelector} from 'react-redux';
+import React, {useCallback, useEffect, useState} from 'react';
+import {styles, Container} from './styles';
+import {initStripe, useStripe, CardForm} from '@stripe/stripe-react-native';
+import {Button} from '~src/components';
 
 const STRIPE_PUBLISHABLE_KEY = 'pk_test_4w4O2cKeqIBDIzucoUBDOKYO';
 
 export const Checkout = () => {
   const [cardData, setCardData] = useState(null);
+  const stripe = useStripe();
 
-  /////////////////////////////////////////////////////////
-  const {user} = useSelector(state => state.auth);
-  const {locale} = useSelector(state => state.language);
-  const {allOffers} = useSelector(state => state.package);
-  /////////////////////////////////////////////////////////
+  const createCardToken = useCallback(async () => {
+    try {
+      const cardToken = await stripe.createToken({
+        type: 'Card',
+      });
+      console.log(JSON.stringify(cardToken));
+    } catch (error) {
+      console.error('Error creating card token:', error);
+    }
+  }, [stripe]);
+
   useEffect(() => {
     initStripe({
       publishableKey: STRIPE_PUBLISHABLE_KEY,
@@ -23,7 +27,7 @@ export const Checkout = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <Container>
       <CardForm
         cardStyle={styles.cardStyle}
         postalCodeEnabled={false}
@@ -36,23 +40,9 @@ export const Checkout = () => {
         disabled={cardData?.complete ? false : true}
         onPress={() => {
           console.log(cardData);
+          createCardToken();
         }}
       />
-      <Button
-        title={`user redux`}
-        style={{marginVertical: 10}}
-        onPress={() => console.log(JSON.stringify(user))}
-      />
-      <Button
-        title={`language redux`}
-        style={{marginVertical: 10}}
-        onPress={() => console.log(locale.LABEL.CONFIRM)}
-      />
-      <Button
-        title={`package redux`}
-        style={{marginVertical: 10}}
-        onPress={() => console.log(allOffers)}
-      />
-    </View>
+    </Container>
   );
 };
