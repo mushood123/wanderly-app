@@ -86,6 +86,10 @@ export const setCurrentUserAcceptedOffers = (pid, uid) => {
   database().ref(`orders/${pid}/acceptedBy/${uid}`).set(true);
 };
 
+export const removeCurrentUserAcceptedOffers = (pid, uid) => {
+  database().ref(`orders/${pid}/acceptedBy/${uid}`).set(false);
+};
+
 export const deleteCurrentUserCreatedOffer = pid => {
   database()
     .ref(`orders/${pid}`)

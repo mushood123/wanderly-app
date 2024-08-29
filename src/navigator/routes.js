@@ -1,5 +1,3 @@
-import {Checkout} from '../screens';
-
 export const ROUTES = {
   BottomTabNavigator: 'BottomTabNavigator',
   SignIn: 'SignIn',

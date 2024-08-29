@@ -1,43 +1,40 @@
-import {StyleSheet} from 'react-native';
+import styled from 'styled-components/native';
 
-export const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-  },
-  createPackageContainer: {
-    position: 'absolute',
-    right: 0,
-    bottom: 10,
-    backgroundColor: 'yellow',
-  },
-  createPackage: {color: 'red', fontSize: 20},
-  modalContainer: {
-    flex: 1,
-    backgroundColor: '#00000090',
-    justifyContent: 'center',
-    paddingHorizontal: 20,
-  },
-  closeCreatePackage: {
-    position: 'absolute',
-    top: 60,
-    right: 30,
-    backgroundColor: 'white',
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  x: {color: 'red', fontSize: 20},
-  addCreatePackage: {
-    position: 'absolute',
-    backgroundColor: 'white',
-    width: 50,
-    right: 30,
-    bottom: 320,
-    height: 50,
-    borderRadius: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+export const ModalContainer = styled.View`
+  flex: 1;
+  background-color: #00000090;
+  justify-content: center;
+  padding-horizontal: 20px;
+`;
+
+export const CloseModalButton = styled.TouchableOpacity`
+  position: absolute;
+  top: 60px;
+  right: 30px;
+  background-color: pink;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+`;
+export const ModalButtonText = styled.Text`
+  color: ${props => (props.$close ? 'red' : 'green')};
+  font-size: 30px;
+`;
+
+export const AddPackageButton = styled.TouchableOpacity`
+  position: absolute;
+  background-color: #90ee90;
+  width: 50px;
+  height: 50px;
+  right: 30px;
+  bottom: 300px;
+  border-radius: 25px;
+  justify-content: center;
+  align-items: center;
+`;
+export const ErrorText = styled.Text`
+  margin-bottom: 10px;
+  color: red;
+`;

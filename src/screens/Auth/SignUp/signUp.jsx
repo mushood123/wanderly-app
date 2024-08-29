@@ -1,3 +1,4 @@
+import {useCallback} from 'react';
 import {
   TouchableOpacity,
   View,
@@ -5,14 +6,11 @@ import {
   ScrollView,
   KeyboardAvoidingView,
 } from 'react-native';
+import {FormField, Text} from '~src/components';
 import {styles} from './styles';
-import {FormField, Text} from '../../../components';
 import {useFormik} from 'formik';
-import {useCallback} from 'react';
 import {formInit, signUpCallback} from './utils';
-import {guide_explain_tourist} from '../../../assets';
-
-import {ROUTES} from '../../../navigator';
+import {ROUTES} from '~src/navigator';
 
 export const SignUp = ({navigation}) => {
   const form = useFormik(formInit);

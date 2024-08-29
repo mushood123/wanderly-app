@@ -1,19 +1,17 @@
 import React, {useCallback, useState} from 'react';
 import {styles} from './styles';
-import {FormField, Text} from '../../../components';
 import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
 import {useFormik} from 'formik';
 import {formInit} from './utils';
-import {ROUTES} from '../../../navigator';
-import {firebase} from '../../../firebase';
-
-import {IconAvatar, IconCross, IconLogo, IconTick} from '../../../assets';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import LottieView from 'lottie-react-native';
-import {animLoader} from '../../../assets';
-import {CardField, CardForm, useStripe} from '@stripe/stripe-react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {setUser} from '../../../redux/Auth';
+import {firebase} from '~src/firebase';
+import {setUser} from '~src/redux/Auth';
+import {FormField, Text} from '~src/components';
+import {animLoader} from '~src/assets';
+import {IconAvatar, IconTick, IconLogo, IconCross} from '~src/assets';
+import {ROUTES} from '~src/navigator';
 
 export const Home = ({navigation}) => {
   const {user} = useSelector(state => state.auth);
@@ -23,7 +21,6 @@ export const Home = ({navigation}) => {
   const {values, errors, handleChange} = form;
   const [imageLoader, setImageLoader] = useState(false);
 
-  const stripe = useStripe();
   const dispatch = useDispatch();
 
   const confirmPressed = useCallback(() => {
@@ -42,24 +39,6 @@ export const Home = ({navigation}) => {
       },
     );
   }, [values, user]);
-
-  // const setProfilePic = useCallback(
-  //   async (useCamera = false) => {
-  //     const cardToken = await stripe.createToken({
-  //       type: 'Card',
-  //     });
-  //     console.log(JSON.stringify(cardToken));
-  //     // const {assets} = useCamera
-  //     //   ? await launchCamera()
-  //     //   : await launchImageLibrary();
-  //     // if (assets.length > 0) {
-  //     //   if (assets[0].type == 'image/jpg') {
-  //     //     setImage(assets[0]?.uri || '');
-  //     //   }
-  //     // }
-  //   },
-  //   [image],
-  // );
 
   const setProfilePic = useCallback(
     async (useCamera = false) => {
