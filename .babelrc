@@ -1,0 +1,12 @@
+/* 
+  Remove console from Production Build 
+  For Futher More you can see
+  https://reactnative.dev/docs/performance
+*/
+{
+  "env": {
+    "production": {
+      "plugins": ["transform-remove-console"]
+    }
+  }
+}

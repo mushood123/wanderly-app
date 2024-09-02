@@ -1,3 +1,4 @@
-import {SignIn} from './signIn';
+/* eslint-disable import/no-cycle */
+import { SignIn } from './signIn';
 
-export {SignIn};
+export { SignIn };

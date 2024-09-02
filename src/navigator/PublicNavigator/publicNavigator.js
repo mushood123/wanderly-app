@@ -1,7 +1,7 @@
 import React from 'react';
 import {SignIn, SignUp} from '../../screens';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {ROUTES} from '../routes';
+import {ROUTES} from '../../routes';
 
 const RootStack = createNativeStackNavigator();
 
