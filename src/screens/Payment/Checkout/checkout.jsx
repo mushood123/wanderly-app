@@ -2,8 +2,7 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {styles, Container} from './styles';
 import {initStripe, useStripe, CardForm} from '@stripe/stripe-react-native';
 import {Button} from '~src/components';
-
-const STRIPE_PUBLISHABLE_KEY = 'pk_test_4w4O2cKeqIBDIzucoUBDOKYO';
+import {STRIPE_PUBLISHABLE_KEY} from '~src/utils';
 
 export const Checkout = () => {
   const [cardData, setCardData] = useState(null);

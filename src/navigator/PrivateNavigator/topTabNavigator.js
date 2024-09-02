@@ -9,19 +9,22 @@ import {styles} from './styles';
 import {IconCreatePackage} from '../../assets';
 import {useDispatch, useSelector} from 'react-redux';
 import {setModalVisibility} from '../../redux/Packages';
+import {useTheme} from 'styled-components';
 
 const Tab = createMaterialTopTabNavigator();
 
 export const TopTabNavigator = () => {
   const {modalVisibility} = useSelector(state => state.package);
   const dispatch = useDispatch();
+  const {cardColor} = useTheme();
+
   return (
     <>
       <Tab.Navigator
         screenOptions={{
           tabBarLabelStyle: {fontSize: 12, fontFamily: font.primary},
           tabBarItemStyle: {paddingTop: 60},
-          tabBarStyle: {backgroundColor: 'powderblue'},
+          tabBarStyle: {backgroundColor: cardColor},
         }}>
         <Tab.Screen name={ROUTES.AllOffers} component={PackagesHome} />
         <Tab.Screen name={ROUTES.AcceptedOffers} component={AcceptedByMe} />
