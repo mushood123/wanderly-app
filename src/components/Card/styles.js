@@ -1,6 +1,5 @@
 import {font} from '../../theme/fonts';
 import styled from 'styled-components/native';
-import {Button} from '../Button/button';
 
 export const CardContainer = styled.View.attrs(() => ({
   shadowOffset: {
@@ -8,7 +7,7 @@ export const CardContainer = styled.View.attrs(() => ({
     height: 2,
   },
 }))`
-  background-color: powderblue;
+  background-color: ${({theme}) => theme.cardColor};
   border-radius: 10px;
   padding: 15px;
   margin: 10px;

@@ -22,6 +22,7 @@
 		3BF56E913E194E6B8FAF1778 /* Poppins-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DE788CE2E74421FA9B01AB1 /* Poppins-ExtraLight.ttf */; };
 		5793E98D53B848F2B202619A /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B1A88240FB4247C1B513B5FD /* Poppins-SemiBoldItalic.ttf */; };
 		5B1273FFC65447E7AF05AEAE /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B2F752FC74D498781572D78 /* BootSplash.storyboard */; };
+		6220DA942C81D6D0001DEBB3 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6220DA932C81D6CF001DEBB3 /* Config.xcconfig */; };
 		6282D2AC2C53C06400BA1318 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6282D2AB2C53C06400BA1318 /* GoogleService-Info.plist */; };
 		65A54C06265C41DB92D5C7FA /* Poppins-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 93034BE428574C0DAA65D2DA /* Poppins-ThinItalic.ttf */; };
 		6B986C8ABA4A449F8AB51201 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70C0F47447F5465A80FB8950 /* Colors.xcassets */; };
@@ -47,6 +48,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
 			remoteInfo = WanderlyApp;
+		};
+		628B22BA2C810A2400640AB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 628B22B52C810A2400640AB1 /* ReactNativeConfig.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB2648DF1C7BE17A00B8F155;
+			remoteInfo = ReactNativeConfig;
+		};
+		628B22BC2C810A2400640AB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 628B22B52C810A2400640AB1 /* ReactNativeConfig.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3DF7F6AC203AA09B00D0EAB7;
+			remoteInfo = "ReactNativeConfig-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -75,7 +90,9 @@
 		5B7EB9410499542E8C5724F5 /* Pods-WanderlyApp-WanderlyAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WanderlyApp-WanderlyAppTests.debug.xcconfig"; path = "Target Support Files/Pods-WanderlyApp-WanderlyAppTests/Pods-WanderlyApp-WanderlyAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5E27CD4CEAAA6EAE32F5E4A1 /* Pods_WanderlyApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WanderlyApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61C22823DD174908AFB6D07A /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraLightItalic.ttf"; path = "../src/assets/fonts/Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		6220DA932C81D6CF001DEBB3 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		6282D2AB2C53C06400BA1318 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		628B22B52C810A2400640AB1 /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		64E1FDF106934780AB301D8C /* Chella-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Chella-Medium.ttf"; path = "../src/assets/fonts/Chella-Medium.ttf"; sourceTree = "<group>"; };
 		70C0F47447F5465A80FB8950 /* Colors.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = WanderlyApp/Colors.xcassets; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = WanderlyApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -157,6 +174,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		628B22B62C810A2400640AB1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				628B22BB2C810A2400640AB1 /* libRNCConfig.a */,
+				628B22BD2C810A2400640AB1 /* libRNCConfig-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		70E9EA225F2A4479ABF7F236 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +213,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				628B22B52C810A2400640AB1 /* ReactNativeConfig.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -194,6 +221,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				6220DA932C81D6CF001DEBB3 /* Config.xcconfig */,
 				6282D2AB2C53C06400BA1318 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* WanderlyApp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -302,6 +330,12 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 628B22B62C810A2400640AB1 /* Products */;
+					ProjectRef = 628B22B52C810A2400640AB1 /* ReactNativeConfig.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* WanderlyApp */,
@@ -309,6 +343,25 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		628B22BB2C810A2400640AB1 /* libRNCConfig.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = libRNCConfig.a;
+			path = libReactNativeConfig.a;
+			remoteRef = 628B22BA2C810A2400640AB1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		628B22BD2C810A2400640AB1 /* libRNCConfig-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			name = "libRNCConfig-tvOS.a";
+			path = "libReactNativeConfig-tvOS.a";
+			remoteRef = 628B22BC2C810A2400640AB1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
@@ -326,6 +379,7 @@
 				6282D2AC2C53C06400BA1318 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				B9F5716AF78FC388A30CDB4C /* PrivacyInfo.xcprivacy in Resources */,
+				6220DA942C81D6D0001DEBB3 /* Config.xcconfig in Resources */,
 				304539DB7115441FA1C00B0C /* Chella-Bold.ttf in Resources */,
 				F84791B4B38C44EA92D61CFC /* Chella-Medium.ttf in Resources */,
 				B1DDA12E28324933AA215A9F /* Poppins-Black.ttf in Resources */,
@@ -635,6 +689,7 @@
 		};
 		83CBBA201A601CBA00E9B192 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6220DA932C81D6CF001DEBB3 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CC = "";
@@ -729,6 +784,7 @@
 		};
 		83CBBA211A601CBA00E9B192 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6220DA932C81D6CF001DEBB3 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CC = "";

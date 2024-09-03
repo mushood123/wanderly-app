@@ -15,7 +15,7 @@ export const Home = () => {
     firebase.setCurrentUserAcceptedOffers(pid, uid);
   }, []);
   return (
-    <ScrollContainer>
+    <ScrollContainer $dark={true}>
       {allOffers &&
         Object.keys(allOffers).map((packageId, index) => {
           const {packageDetails, uid, profile} = allOffers[packageId];

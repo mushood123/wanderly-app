@@ -12,7 +12,7 @@ import {
   ErrorText,
 } from './styles';
 import {useSelector, useDispatch} from 'react-redux';
-import {setModalVisibility} from '../../redux/Packages';
+import {setModalVisibility} from '~src/redux/Packages';
 
 export const EditModal = memo(
   ({
@@ -24,6 +24,7 @@ export const EditModal = memo(
     const {user} = useSelector(state => state.auth);
     const {modalVisibility} = useSelector(state => state.package);
     const dispatch = useDispatch();
+    console.log('modalVisibility', modalVisibility);
 
     const requestedPackageValues = requestedPackage
       ? {
@@ -35,6 +36,7 @@ export const EditModal = memo(
     const form = useFormik(formInit(requestedPackageValues));
     const {uid} = user;
     const {values, errors, handleChange} = form;
+    console.log('values', values);
 
     const handleClose = useCallback(() => {
       setRequestedPackage(null);

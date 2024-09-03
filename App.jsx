@@ -1,10 +1,12 @@
-import React, {useEffect} from 'react';
-import {TextInput} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Appearance, TextInput} from 'react-native';
 import {font} from '~src/theme/fonts';
 import {Provider, useDispatch, useSelector} from 'react-redux';
 import {store} from '~src/redux/store';
 import {Navigator} from '~src/navigator';
 import {restore, getUser} from '~src/redux/App';
+import {ThemeProvider} from 'styled-components';
+import {DarkTheme, LightTheme} from './src/theme/colors';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -14,7 +16,7 @@ const App = () => {
   useEffect(() => {
     getUser();
     dispatch(restore());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Provider store={store}>
@@ -23,11 +25,19 @@ const App = () => {
   );
 };
 
-const WrappedApp = () => (
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
+const WrappedApp = () => {
+  const [colorScheme, setColorScheme] = useState(Appearance.getColorScheme());
+  Appearance.addChangeListener(theme => {
+    setColorScheme(theme.colorScheme);
+  });
+  return (
+    <ThemeProvider theme={colorScheme === 'dark' ? DarkTheme : LightTheme}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ThemeProvider>
+  );
+};
 
 export default WrappedApp;
 
