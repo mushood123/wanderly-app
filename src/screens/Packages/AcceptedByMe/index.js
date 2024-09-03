@@ -1,3 +1,3 @@
-import {AcceptedByMe} from './acceptedByMe';
+import { AcceptedByMe } from './acceptedByMe';
 
-export {AcceptedByMe};
+export { AcceptedByMe };

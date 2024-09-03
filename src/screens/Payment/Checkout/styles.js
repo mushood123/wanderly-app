@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
@@ -7,13 +7,13 @@ export const Container = styled.View`
   align-items: center;
 `;
 export const styles = StyleSheet.create({
-  cardStyle: {
-    backgroundColor: '#FFFFFF',
-    height: '100%',
-  },
-  containerStyle: {
-    width: '80%',
-    height: 210,
-    marginTop: 100,
-  },
+    cardStyle: {
+        backgroundColor: '#FFFFFF',
+        height: '100%',
+    },
+    containerStyle: {
+        width: '80%',
+        height: 210,
+        marginTop: 100,
+    },
 });

@@ -1,5 +1,5 @@
 export const reducers = {
-  setLanguage: (state, action) => {
-    state.locale = action.payload;
-  },
+    setLanguage: (state, action) => {
+        state.locale = action.payload;
+    },
 };

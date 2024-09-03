@@ -1,8 +1,8 @@
-import {packageSlice} from './slice';
+import { packageSlice } from './slice';
 
 export const {
-  setModalVisibility,
-  setAcceptedPackage,
-  setCreatedOffers,
-  setAllOffers,
+    setModalVisibility,
+    setAcceptedPackage,
+    setCreatedOffers,
+    setAllOffers,
 } = packageSlice.actions;

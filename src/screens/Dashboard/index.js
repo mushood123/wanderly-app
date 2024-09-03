@@ -1,3 +1,3 @@
-import {Home} from './Home';
+import { Home } from './Home';
 
-export {Home as DashboardHome};
+export { Home as DashboardHome };

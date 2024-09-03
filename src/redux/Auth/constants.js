@@ -1,3 +1,3 @@
 export const AUTH = {
-  setUser: 'auth/setUser',
+    setUser: 'auth/setUser',
 };

@@ -1,2 +1,3 @@
-import {font} from './fonts';
-export default {font};
+import { font } from './fonts';
+
+export default { font };
