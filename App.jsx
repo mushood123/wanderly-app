@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Appearance, TextInput } from 'react-native';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import { Navigator } from '~src/routes';
 import { restore, getUser } from '~src/redux/App';
 import { store } from '~src/redux/store';
 import { font } from '~src/theme/fonts';
+import { Navigator } from './src/navigator';
 import { DarkTheme, LightTheme } from './src/theme/colors';
 
 const App = () => {
@@ -18,11 +18,7 @@ const App = () => {
         dispatch(restore());
     }, [dispatch]);
 
-    return (
-        <Provider store={store}>
-            {!appLoading && <Navigator user={user} />}
-        </Provider>
-    );
+    return <Provider store={store}>{!appLoading && <Navigator user={user} />}</Provider>;
 };
 
 const WrappedApp = () => {

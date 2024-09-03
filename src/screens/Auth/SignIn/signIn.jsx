@@ -1,11 +1,5 @@
 import React, { useCallback } from 'react';
-import {
-    TouchableOpacity,
-    View,
-    Image,
-    ScrollView,
-    KeyboardAvoidingView,
-} from 'react-native';
+import { TouchableOpacity, View, Image, ScrollView, KeyboardAvoidingView } from 'react-native';
 import { useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { useFormik } from 'formik';
@@ -40,9 +34,7 @@ export const SignIn = () => {
                 </View>
                 <View style={styles.formView}>
                     <Text style={styles.welcomeText}>{locale.CLAUSE.WELCOME_BACK}</Text>
-                    <Text style={styles.loginText}>
-                        {locale.CLAUSE.LOGIN_TO_YOUR_ACCOUNT}
-                    </Text>
+                    <Text style={styles.loginText}>{locale.CLAUSE.LOGIN_TO_YOUR_ACCOUNT}</Text>
                     <FormField
                         value={values.email}
                         handleOnChangeText={handleChange('email')}
@@ -59,9 +51,7 @@ export const SignIn = () => {
                         handleOnChangeText={handleChange('password')}
                         isValidate={errors?.password}
                     />
-                    {errors?.password && (
-                        <Text style={{ color: 'red' }}>{errors?.password}</Text>
-                    )}
+                    {errors?.password && <Text style={{ color: 'red' }}>{errors?.password}</Text>}
                     <TouchableOpacity
                         onPress={signInPressed}
                         disabled={!!(errors?.email || errors?.password)}
@@ -71,12 +61,8 @@ export const SignIn = () => {
                     </TouchableOpacity>
 
                     <View style={styles.footerContainer}>
-                        <Text style={styles.footerGap}>
-                            {locale.CLAUSE.DO_NOT_HAVE_AN_ACCOUNT}
-                        </Text>
-                        <TouchableOpacity
-                            onPress={() => navigation.navigate(ROUTES.SignUp)}
-                        >
+                        <Text style={styles.footerGap}>{locale.CLAUSE.DO_NOT_HAVE_AN_ACCOUNT}</Text>
+                        <TouchableOpacity onPress={() => navigation.navigate(ROUTES.SignUp)}>
                             <Text style={styles.footerText}>{locale.LABEL.SIGN_UP}</Text>
                         </TouchableOpacity>
                     </View>

@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { Image, ScrollView, TouchableOpacity, View } from 'react-native';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 import { useFormik } from 'formik';
 import LottieView from 'lottie-react-native';
 import { animLoader, IconAvatar, IconTick, IconLogo, IconCross } from '~src/assets';
@@ -12,13 +13,14 @@ import { ROUTES } from '~src/routes';
 import { styles } from './styles';
 import { formInit } from './utils';
 
-export const Home = ({ navigation }) => {
+export const Home = () => {
     const { user } = useSelector(state => state.auth);
     const [image, setImage] = useState('');
     const { locale } = useSelector(state => state.language);
     const form = useFormik(formInit(user?.userData || {}));
     const { values, errors, handleChange } = form;
     const [imageLoader, setImageLoader] = useState(false);
+    const navigation = useNavigation();
 
     const dispatch = useDispatch();
 

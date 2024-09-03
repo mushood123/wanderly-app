@@ -7,13 +7,16 @@ import {
     KeyboardAvoidingView,
 } from 'react-native';
 import { useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 import { useFormik } from 'formik';
+import { guideExplainTourist } from '~src/assets';
 import { FormField, Text } from '~src/components';
 import { ROUTES } from '~src/routes';
 import { styles } from './styles';
 import { formInit, signUpCallback } from './utils';
 
-export const SignUp = ({ navigation }) => {
+export default () => {
+    const navigation = useNavigation();
     const form = useFormik(formInit);
     const { locale } = useSelector(state => state.language);
 
