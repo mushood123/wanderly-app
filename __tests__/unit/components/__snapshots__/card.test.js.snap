@@ -1,0 +1,731 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component renders correctly and matches snapshot with default props 1`] = `
+<View
+  shadowOffset={
+    {
+      "height": 2,
+      "width": 0,
+    }
+  }
+  style={
+    {
+      "backgroundColor": "#A1E3F7",
+      "borderBottomLeftRadius": 10,
+      "borderBottomRightRadius": 10,
+      "borderTopLeftRadius": 10,
+      "borderTopRightRadius": 10,
+      "elevation": 5,
+      "marginBottom": 10,
+      "marginLeft": 10,
+      "marginRight": 10,
+      "marginTop": 10,
+      "paddingBottom": 15,
+      "paddingLeft": 15,
+      "paddingRight": 15,
+      "paddingTop": 15,
+      "shadowColor": "#000",
+      "shadowOpacity": 0.25,
+      "shadowRadius": 3.84,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "marginBottom": 10,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "marginBottom": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "fontFamily": "Chella-Bold",
+            "fontSize": 18,
+            "fontWeight": "bold",
+            "marginBottom": 5,
+          }
+        }
+      >
+        NA
+      </Text>
+      <Text
+        style={
+          {
+            "fontFamily": "Poppins-Regular",
+          }
+        }
+      >
+        Lahore
+      </Text>
+    </View>
+    <View
+      style={
+        {
+          "backgroundColor": "#918d8d",
+          "height": "100%",
+          "marginHorizontal": 10,
+          "width": 1,
+        }
+      }
+    />
+    <View
+      style={
+        {
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "marginLeft": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "fontFamily": "Chella-Bold",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "marginBottom": 2,
+          }
+        }
+      >
+        Visiting Places
+      </Text>
+      <Text
+        style={
+          {
+            "textAlign": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "fontFamily": "Chella-Bold",
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "marginBottom": 2,
+            }
+          }
+        >
+           
+          Hourly Rate
+          : 
+        </Text>
+        <Text
+          style={
+            {
+              "fontSize": 15,
+            }
+          }
+        >
+          0
+        </Text>
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`Card component renders correctly with buy button for another user 1`] = `
+<View
+  shadowOffset={
+    {
+      "height": 2,
+      "width": 0,
+    }
+  }
+  style={
+    {
+      "backgroundColor": "#A1E3F7",
+      "borderBottomLeftRadius": 10,
+      "borderBottomRightRadius": 10,
+      "borderTopLeftRadius": 10,
+      "borderTopRightRadius": 10,
+      "elevation": 5,
+      "marginBottom": 10,
+      "marginLeft": 10,
+      "marginRight": 10,
+      "marginTop": 10,
+      "paddingBottom": 15,
+      "paddingLeft": 15,
+      "paddingRight": 15,
+      "paddingTop": 15,
+      "shadowColor": "#000",
+      "shadowOpacity": 0.25,
+      "shadowRadius": 3.84,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "marginBottom": 10,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "marginBottom": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "fontFamily": "Chella-Bold",
+            "fontSize": 18,
+            "fontWeight": "bold",
+            "marginBottom": 5,
+          }
+        }
+      >
+        NA
+      </Text>
+      <Text
+        style={
+          {
+            "fontFamily": "Poppins-Regular",
+          }
+        }
+      >
+        Lahore
+      </Text>
+    </View>
+    <View
+      style={
+        {
+          "backgroundColor": "#918d8d",
+          "height": "100%",
+          "marginHorizontal": 10,
+          "width": 1,
+        }
+      }
+    />
+    <View
+      style={
+        {
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "marginLeft": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "fontFamily": "Chella-Bold",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "marginBottom": 2,
+          }
+        }
+      >
+        Visiting Places
+      </Text>
+      <Text
+        style={
+          {
+            "textAlign": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "fontFamily": "Chella-Bold",
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "marginBottom": 2,
+            }
+          }
+        >
+           
+          Hourly Rate
+          : 
+        </Text>
+        <Text
+          style={
+            {
+              "fontSize": 15,
+            }
+          }
+        >
+          0
+        </Text>
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "borderBottomLeftRadius": 10,
+        "borderBottomRightRadius": 10,
+        "borderTopLeftRadius": 10,
+        "borderTopRightRadius": 10,
+        "justifyContent": "center",
+        "marginVertical": 10,
+        "opacity": 1,
+        "paddingVertical": 20,
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "fontFamily": "Chella-Bold",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "marginBottom": 2,
+        }
+      }
+    >
+      Buy
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Card component renders correctly with custom props and matches snapshot 1`] = `
+<View
+  shadowOffset={
+    {
+      "height": 2,
+      "width": 0,
+    }
+  }
+  style={
+    {
+      "backgroundColor": "#A1E3F7",
+      "borderBottomLeftRadius": 10,
+      "borderBottomRightRadius": 10,
+      "borderTopLeftRadius": 10,
+      "borderTopRightRadius": 10,
+      "elevation": 5,
+      "marginBottom": 10,
+      "marginLeft": 10,
+      "marginRight": 10,
+      "marginTop": 10,
+      "paddingBottom": 15,
+      "paddingLeft": 15,
+      "paddingRight": 15,
+      "paddingTop": 15,
+      "shadowColor": "#000",
+      "shadowOpacity": 0.25,
+      "shadowRadius": 3.84,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "marginBottom": 10,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "marginBottom": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "fontFamily": "Chella-Bold",
+            "fontSize": 18,
+            "fontWeight": "bold",
+            "marginBottom": 5,
+          }
+        }
+      >
+        John Doe
+      </Text>
+      <Text
+        style={
+          {
+            "fontFamily": "Poppins-Regular",
+          }
+        }
+      >
+        San Francisco
+      </Text>
+    </View>
+    <View
+      style={
+        {
+          "backgroundColor": "#918d8d",
+          "height": "100%",
+          "marginHorizontal": 10,
+          "width": 1,
+        }
+      }
+    />
+    <View
+      style={
+        {
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "marginLeft": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "fontFamily": "Chella-Bold",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "marginBottom": 2,
+          }
+        }
+      >
+        Visiting Places
+      </Text>
+      <Text
+        style={
+          {
+            "fontSize": 15,
+            "marginBottom": 5,
+          }
+        }
+      >
+        -&gt; 
+        New York
+      </Text>
+      <Text
+        style={
+          {
+            "fontSize": 15,
+            "marginBottom": 5,
+          }
+        }
+      >
+        -&gt; 
+        Los Angeles
+      </Text>
+      <Text
+        style={
+          {
+            "textAlign": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "fontFamily": "Chella-Bold",
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "marginBottom": 2,
+            }
+          }
+        >
+           
+          Hourly Rate
+          : 
+        </Text>
+        <Text
+          style={
+            {
+              "fontSize": 15,
+            }
+          }
+        >
+          50
+        </Text>
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "borderBottomLeftRadius": 10,
+        "borderBottomRightRadius": 10,
+        "borderTopLeftRadius": 10,
+        "borderTopRightRadius": 10,
+        "justifyContent": "center",
+        "marginVertical": 10,
+        "opacity": 1,
+        "paddingVertical": 20,
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "fontFamily": "Chella-Bold",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "marginBottom": 2,
+        }
+      }
+    >
+      Buy
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`Card component renders correctly with edit button when user owns the package 1`] = `
+<View
+  shadowOffset={
+    {
+      "height": 2,
+      "width": 0,
+    }
+  }
+  style={
+    {
+      "backgroundColor": "#A1E3F7",
+      "borderBottomLeftRadius": 10,
+      "borderBottomRightRadius": 10,
+      "borderTopLeftRadius": 10,
+      "borderTopRightRadius": 10,
+      "elevation": 5,
+      "marginBottom": 10,
+      "marginLeft": 10,
+      "marginRight": 10,
+      "marginTop": 10,
+      "paddingBottom": 15,
+      "paddingLeft": 15,
+      "paddingRight": 15,
+      "paddingTop": 15,
+      "shadowColor": "#000",
+      "shadowOpacity": 0.25,
+      "shadowRadius": 3.84,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "marginBottom": 10,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "marginBottom": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "fontFamily": "Chella-Bold",
+            "fontSize": 18,
+            "fontWeight": "bold",
+            "marginBottom": 5,
+          }
+        }
+      >
+        NA
+      </Text>
+      <Text
+        style={
+          {
+            "fontFamily": "Poppins-Regular",
+          }
+        }
+      >
+        Lahore
+      </Text>
+    </View>
+    <View
+      style={
+        {
+          "backgroundColor": "#918d8d",
+          "height": "100%",
+          "marginHorizontal": 10,
+          "width": 1,
+        }
+      }
+    />
+    <View
+      style={
+        {
+          "flexDirection": "column",
+          "justifyContent": "space-between",
+          "marginLeft": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          {
+            "fontFamily": "Chella-Bold",
+            "fontSize": 16,
+            "fontWeight": "bold",
+            "marginBottom": 2,
+          }
+        }
+      >
+        Visiting Places
+      </Text>
+      <Text
+        style={
+          {
+            "textAlign": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "fontFamily": "Chella-Bold",
+              "fontSize": 16,
+              "fontWeight": "bold",
+              "marginBottom": 2,
+            }
+          }
+        >
+           
+          Hourly Rate
+          : 
+        </Text>
+        <Text
+          style={
+            {
+              "fontSize": 15,
+            }
+          }
+        >
+          0
+        </Text>
+      </Text>
+    </View>
+  </View>
+  <View
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    accessibilityValue={
+      {
+        "max": undefined,
+        "min": undefined,
+        "now": undefined,
+        "text": undefined,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "borderBottomLeftRadius": 10,
+        "borderBottomRightRadius": 10,
+        "borderTopLeftRadius": 10,
+        "borderTopRightRadius": 10,
+        "justifyContent": "center",
+        "marginVertical": 10,
+        "opacity": 1,
+        "paddingVertical": 20,
+      }
+    }
+  >
+    <Text
+      style={
+        {
+          "fontFamily": "Chella-Bold",
+          "fontSize": 16,
+          "fontWeight": "bold",
+          "marginBottom": 2,
+        }
+      }
+    >
+      Edit
+    </Text>
+  </View>
+</View>
+`;

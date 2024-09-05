@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text component renders correctly with custom styles and matches snapshot 1`] = `
+<Text
+  style={
+    {
+      "color": "red",
+      "fontFamily": "Poppins-Regular",
+      "fontSize": 20,
+    }
+  }
+>
+  Styled Text
+</Text>
+`;
+
+exports[`Text component renders correctly with default styles and matches snapshot 1`] = `
+<Text
+  style={
+    {
+      "fontFamily": "Poppins-Regular",
+    }
+  }
+>
+  Hello World
+</Text>
+`;
+
+exports[`Text component renders correctly with nested elements and matches snapshot 1`] = `
+<Text
+  style={
+    {
+      "fontFamily": "Poppins-Regular",
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "fontFamily": "Poppins-Regular",
+        "fontWeight": "bold",
+      }
+    }
+  >
+    Nested Bold Text
+  </Text>
+</Text>
+`;

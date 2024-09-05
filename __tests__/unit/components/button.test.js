@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '~src/components/Button';
-import { render } from '../../utils/theme-wrapper/theme-wrapper';
+import { render } from '../utils/theme-wrapper/theme-wrapper';
 
 describe('Button component', () => {
     it('matches the snapshot', () => {

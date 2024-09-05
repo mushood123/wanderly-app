@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormField component renders correctly and matches snapshot 1`] = `
+<BVLinearGradient
+  colors={
+    [
+      4291284716,
+      4287273187,
+    ]
+  }
+  endPoint={
+    {
+      "x": 1,
+      "y": 0,
+    }
+  }
+  locations={null}
+  startPoint={
+    {
+      "x": 0.2,
+      "y": 0,
+    }
+  }
+  style={
+    {
+      "borderColor": "red",
+      "borderRadius": 10,
+      "borderWidth": 2,
+      "padding": 20,
+    }
+  }
+>
+  <TextInput
+    editable={true}
+    keyboardType="default"
+    onChangeText={[Function]}
+    placeholder="Email"
+    placeholderTextColor="#294f8e90"
+    secureTextEntry={false}
+    style={
+      {
+        "color": "#294f8e",
+        "fontSize": 18,
+      }
+    }
+    value=""
+  />
+</BVLinearGradient>
+`;
+
+exports[`FormField component renders correctly when disabled 1`] = `
+<BVLinearGradient
+  colors={
+    [
+      4291284716,
+      4287273187,
+    ]
+  }
+  endPoint={
+    {
+      "x": 1,
+      "y": 0,
+    }
+  }
+  locations={null}
+  startPoint={
+    {
+      "x": 0.2,
+      "y": 0,
+    }
+  }
+  style={
+    {
+      "borderColor": "red",
+      "borderRadius": 10,
+      "borderWidth": 2,
+      "padding": 20,
+    }
+  }
+>
+  <TextInput
+    editable={false}
+    keyboardType="default"
+    onChangeText={[Function]}
+    placeholder="Email"
+    placeholderTextColor="#294f8e90"
+    secureTextEntry={false}
+    style={
+      {
+        "color": "#294f8e",
+        "fontSize": 18,
+      }
+    }
+    value="test@test.com"
+  />
+</BVLinearGradient>
+`;
+
+exports[`FormField component renders correctly with secureTextEntry 1`] = `
+<BVLinearGradient
+  colors={
+    [
+      4291284716,
+      4287273187,
+    ]
+  }
+  endPoint={
+    {
+      "x": 1,
+      "y": 0,
+    }
+  }
+  locations={null}
+  startPoint={
+    {
+      "x": 0.2,
+      "y": 0,
+    }
+  }
+  style={
+    {
+      "borderColor": "#FFFFFF",
+      "borderRadius": 10,
+      "borderWidth": 1,
+      "padding": 20,
+    }
+  }
+>
+  <TextInput
+    editable={true}
+    keyboardType="default"
+    onChangeText={[Function]}
+    placeholder="Password"
+    placeholderTextColor="#294f8e90"
+    secureTextEntry={true}
+    style={
+      {
+        "color": "#294f8e",
+        "fontSize": 18,
+      }
+    }
+    value="password"
+  />
+</BVLinearGradient>
+`;

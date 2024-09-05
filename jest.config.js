@@ -15,7 +15,10 @@ module.exports = {
     transform: {
         '^.+\\.[t|j]s?$': 'babel-jest',
         '^.+\\.[t|j]sx?$': 'babel-jest'
-    }, /*
+    },
+    moduleNameMapper: {
+        '^~src/(.*)$': '<rootDir>/src/$1',
+    },/*
  * Automatically reset mock state before every test.
  * Equivalent to calling `jest.resetAllMocks()` before
  * each test. This will lead to any mocks having their
