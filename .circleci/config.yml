@@ -4,16 +4,20 @@ version: 2.1
 orbs:
   node: circleci/node@5
 jobs:
-  unit-test-cases:
-    working_directory: ~/repo
+  test-node:
+    # Install node dependencies and run tests
+    executor: node/default
+    environment:
+      JEST_JUNIT_OUTPUT_DIR: ./test-results/
     steps:
-    - node/install-packages:
-        pkg-manager: yarn
-    - run:
-        name: execute unit test cases
-        command: yarn test
-    - store_test_results:
-        path: ./test-results/
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          name: Run tests
+          command: yarn test
+      - store_test_results:
+          path: ./test-results/
   # android-build-and-upload-to-google-play:
   #   working_directory: ~/repo
   #   docker:
