@@ -4,62 +4,16 @@ version: 2.1
 orbs:
   node: circleci/node@5
 jobs:
-unit-test-cases:
+  unit-test-cases:
     working_directory: ~/repo
-    docker:
-      - image: cimg/openjdk:17.0
-    working_directory: ~/project/android
     steps:
-      - checkout:
-          path: ~/project
-      - run:
-          name: Calculate cache key
-          command: |-
-            find . -name 'pom.xml' -o -name 'gradlew*' -o -name '*.gradle*' | \
-                    sort | xargs cat > /tmp/CIRCLECI_CACHE_KEY
-      - restore_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
-      - run:
-          name: Install Ninja
-          command: |
-            sudo apt-get update && sudo apt-get install -y ninja-build
-      - run:
-          name: Install CMake
-          command: |
-            wget https://github.com/Kitware/CMake/releases/download/v3.22.1/cmake-3.22.1-Linux-x86_64.tar.gz
-            tar -xzvf cmake-3.22.1-Linux-x86_64.tar.gz -C $HOME
-            export PATH=$HOME/ninja:$HOME/cmake-3.22.1-Linux-x86_64/bin:$PATH
-      - run:
-          name: Set CMake and Ninja Paths
-          command: |
-            export PATH=$HOME/ninja:$HOME/cmake-3.22.1-Linux-x86_64/bin:$PATH
-      - run:
-          name: Accept Android SDK Licenses
-          command: yes | sdkmanager --licenses || if [ $? -ne '141' ]; then exit $?; fi;
-      - run: yarn install
-      - save_cache:
-          key: cache-{{ checksum "/tmp/CIRCLECI_CACHE_KEY" }}
-          paths:
-            - node_modules
-      - attach_workspace:
-          at: ~/repo
-      - restore_cache:
-          key: 'bundle-v5-{{ checksum "android/Gemfile" }}-{{ arch }}'
-      - run:
-          name: Fix Ruby permissions
-          command: sudo chown -R circleci:circleci /var/lib/gems /usr/local/bin && sudo chmod -R 755 /var/lib/gems /usr/local/bin
-      - run:
-          name: Install fastlane
-          command: bundle install
-          working_directory: android
-      - save_cache:
-          key: 'bundle-v5-{{ checksum "android/Gemfile" }}-{{ arch }}'
-          paths:
-            - vendor/bundle
-      - run:
-          name: execute unit test cases
-          command: yarn test
-          working_directory: ~/project
+    - node/install-packages:
+        pkg-manager: yarn
+    - run:
+        name: execute unit test cases
+        command: yarn test
+    - store_test_results:
+        path: ./test-results/
   # android-build-and-upload-to-google-play:
   #   working_directory: ~/repo
   #   docker:
