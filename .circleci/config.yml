@@ -59,7 +59,7 @@ unit-test-cases:
       - run:
           name: execute unit test cases
           command: yarn test
-          working_directory: ~/repo
+          working_directory: ~/project
   # android-build-and-upload-to-google-play:
   #   working_directory: ~/repo
   #   docker:
