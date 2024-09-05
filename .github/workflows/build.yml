@@ -11,19 +11,14 @@ on:
       - mushood/feature/snapshot-testing
 
 jobs:
-  unit-test-cases:
+   unit-test-cases:
+    # Install node dependencies and run tests
+    executor: node/default
     runs-on: self-hosted
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16' # Specify the version of Node.js
-
-      - name: Install dependencies
-        run: yarn install
-
-      - name: Run tests
-        run: yarn test
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          name: Run tests
+          command: yarn test
