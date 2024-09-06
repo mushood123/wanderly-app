@@ -5,8 +5,9 @@ jobs:
     executor: node/default
     steps:
       - checkout
-      - node/install-packages:
-          pkg-manager: yarn
+      - run: 
+          name: Packages install
+          command: yarn install
       - run:
           name: Run tests
           command: yarn test
@@ -20,4 +21,3 @@ workflows:
             branches:
               only:
                 - main
-                - mushood/feature/snapshot-testing
