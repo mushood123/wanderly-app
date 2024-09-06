@@ -1,15 +1,15 @@
-import React, {useCallback, useEffect} from 'react';
-import {TouchableOpacity} from 'react-native';
-import {ScrollContainer} from './styles';
-import {Card} from '~src/components';
-import {useSelector} from 'react-redux';
-import {firebase} from '~src/firebase';
-import {getAcceptedPackage} from '~src/redux/Packages';
+import React, { useCallback, useEffect } from 'react';
+import { TouchableOpacity } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import { useSelector } from 'react-redux';
+import { Card } from '~src/components';
+import { firebase } from '~src/firebase';
+import { getAcceptedPackage } from '~src/redux/Packages';
+import { ScrollContainer } from './styles';
 
 export const AcceptedByMe = () => {
-  const {user} = useSelector(state => state.auth);
-  const {acceptedPackage} = useSelector(state => state.package);
+  const { user } = useSelector(state => state.auth);
+  const { acceptedPackage } = useSelector(state => state.package);
 
   useEffect(() => {
     getAcceptedPackage(user);
@@ -26,21 +26,23 @@ export const AcceptedByMe = () => {
   );
 
   return (
-    <ScrollContainer $dark={true}>
+    <ScrollContainer $dark>
       {acceptedPackage &&
         Object.keys(acceptedPackage).map((packageId, index) => {
-          const {packageDetails, uid, profile} = acceptedPackage[packageId];
-          const {userData} = profile;
+          const { packageDetails, uid, profile } = acceptedPackage[packageId];
+          const { userData } = profile;
           let cardRef = null;
           return (
             <Animatable.View
               key={`${packageId}_${index}_accepted`}
               ref={_cardRef => (cardRef = _cardRef)}
-              animation={'bounceIn'}>
+              animation="bounceIn"
+            >
               <TouchableOpacity
                 onLongPress={() => {
                   fadeOut(cardRef, packageId);
-                }}>
+                }}
+              >
                 <Card
                   name={userData?.name}
                   showButton={false}

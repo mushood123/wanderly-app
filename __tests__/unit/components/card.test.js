@@ -1,9 +1,8 @@
 import React from 'react';
-import { render } from '../utils/theme-wrapper/theme-wrapper';
-import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import { Card } from '~src/components/Card';
-
+import { render } from '../utils/theme-wrapper/theme-wrapper';
 
 const mockStore = configureStore([]);
 
