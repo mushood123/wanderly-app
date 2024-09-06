@@ -1,3 +1,3 @@
-import {authSlice} from './slice';
+import { authSlice } from './slice';
 
-export const {setUser} = authSlice.actions;
+export const { setUser } = authSlice.actions;

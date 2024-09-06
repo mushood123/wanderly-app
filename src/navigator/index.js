@@ -1,18 +1,19 @@
 import React from 'react';
-import {PublicNavigator} from './PublicNavigator';
-import {PrivateNavigator} from './PrivateNavigator';
-import {NavigationContainer} from '@react-navigation/native';
-import {StatusBar} from 'react-native';
+import { StatusBar } from 'react-native';
 import BootSplash from 'react-native-bootsplash';
+import { NavigationContainer } from '@react-navigation/native';
+import { PrivateNavigator } from './PrivateNavigator';
+import { PublicNavigator } from './PublicNavigator';
 
-export * from './routes';
+export * from '../routes';
 
-export const Navigator = ({user}) => (
-  <NavigationContainer
-    onReady={() => {
-      BootSplash.hide();
-    }}>
-    <StatusBar hidden={true} />
-    {user === null ? <PublicNavigator /> : <PrivateNavigator />}
-  </NavigationContainer>
+export const Navigator = ({ user }) => (
+    <NavigationContainer
+        onReady={() => {
+            BootSplash.hide();
+        }}
+    >
+        <StatusBar hidden />
+        {user === null ? <PublicNavigator /> : <PrivateNavigator />}
+    </NavigationContainer>
 );

@@ -1,3 +1,3 @@
-import {EditModal} from './editModal';
+import { EditModal } from './editModal';
 
-export {EditModal};
+export { EditModal };

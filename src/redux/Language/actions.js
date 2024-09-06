@@ -1,3 +1,3 @@
-import {languageSlice} from './slice';
+import { languageSlice } from './slice';
 
-export const {setLanguage} = languageSlice.actions;
+export const { setLanguage } = languageSlice.actions;

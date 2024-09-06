@@ -1,13 +1,13 @@
-import {font} from '../../theme/fonts';
 import styled from 'styled-components/native';
+import { font } from '../../theme/fonts';
 
 export const CardContainer = styled.View.attrs(() => ({
-  shadowOffset: {
-    width: 0,
-    height: 2,
-  },
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
 }))`
-  background-color: ${({theme}) => theme.cardColor};
+  background-color: ${({ theme }) => theme.cardColor};
   border-radius: 10px;
   padding: 15px;
   margin: 10px;

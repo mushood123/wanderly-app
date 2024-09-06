@@ -1,10 +1,10 @@
-import {PackageSchema} from '../../utils';
+import { PackageSchema } from '../../utils';
 
 export const formInit = {
-  initialValues: {
-    hourlyRate: '',
-    places: '',
-  },
-  validationSchema: PackageSchema,
-  validateOnMount: true,
+    initialValues: {
+        hourlyRate: '',
+        places: '',
+    },
+    validationSchema: PackageSchema,
+    validateOnMount: true,
 };

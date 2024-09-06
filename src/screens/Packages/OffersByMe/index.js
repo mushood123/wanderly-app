@@ -1,3 +1,3 @@
-import {OffersByMe} from './offersByMe';
+import { OffersByMe } from './offersByMe';
 
-export {OffersByMe};
+export { OffersByMe };
