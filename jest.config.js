@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 module.exports = {
     rootDir: '.',
     preset: 'react-native',
@@ -9,9 +10,15 @@ module.exports = {
     verbose: true,
     moduleDirectories: ['node_modules', 'src'],
     transformIgnorePatterns: [
-        'node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation/(.*))',
+        'node_modules/(?!(jest-)?@?react-native|@react-native-community|react-redux|@react-navigation/(.*)|@react-native-firebase/(.*))',
     ],
-    /*
+    transform: {
+        '^.+\\.[t|j]s?$': 'babel-jest',
+        '^.+\\.[t|j]sx?$': 'babel-jest'
+    },
+    moduleNameMapper: {
+        '^~src/(.*)$': '<rootDir>/src/$1',
+    },/*
  * Automatically reset mock state before every test.
  * Equivalent to calling `jest.resetAllMocks()` before
  * each test. This will lead to any mocks having their

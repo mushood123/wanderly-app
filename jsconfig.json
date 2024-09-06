@@ -2,8 +2,14 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "~src/*": ["./*"]
+      "~src/*": [
+        "./*"
+      ]
     }
   },
-  "include": ["src", "__tests__", "src/routes.js"]
+  "include": [
+    "src",
+    "__tests__",
+    "src/routes.js"
+  ]
 }
