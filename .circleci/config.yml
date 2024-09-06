@@ -1,6 +1,4 @@
 version: 2.1
-orbs:
-  node: circleci/node@5
 jobs:
   unit-test-cases:
     # Install node dependencies and run tests
@@ -14,7 +12,8 @@ jobs:
           command: yarn test
 
 workflows:
-  build-and-test:
+  version: 2
+  android-ios:
     jobs:
       - unit-test-cases:
           filters:

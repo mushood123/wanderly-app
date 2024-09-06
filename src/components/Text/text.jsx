@@ -1,11 +1,12 @@
-import {Text as RNText} from 'react-native';
 import React from 'react';
-import {styles} from './styles';
+import { Text as RNText } from 'react-native';
+import { styles } from './styles';
 
-export const Text = props => {
-  return (
-    <RNText {...props} style={{...styles.defaultText, ...props.style}}>
-      {props.children}
+export const Text = props => (
+    <RNText
+        {...props}
+        style={{ ...styles.defaultText, ...props.style }}
+    >
+        {props.children}
     </RNText>
-  );
-};
+);

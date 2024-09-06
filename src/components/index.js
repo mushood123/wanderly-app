@@ -1,7 +1,7 @@
-import {FormField} from './FormField';
-import {Text} from './Text';
-import {Card} from './Card';
-import {EditModal} from './EditModal';
-import {Button} from './Button';
+import { Button } from './Button';
+import { Card } from './Card';
+import { EditModal } from './EditModal';
+import { FormField } from './FormField';
+import { Text } from './Text';
 
-export {FormField, Text, Card, EditModal, Button};
+export { FormField, Text, Card, EditModal, Button };

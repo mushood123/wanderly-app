@@ -1,1 +1,1 @@
-export {PublicNavigator} from './publicNavigator';
+export { PublicNavigator } from './publicNavigator';
