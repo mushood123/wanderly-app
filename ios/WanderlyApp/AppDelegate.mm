@@ -1,6 +1,9 @@
 #import "AppDelegate.h"
 #import <Firebase.h>
 #import <GoogleMaps/GoogleMaps.h>
+#import <AppCenterReactNative.h>
+#import <AppCenterReactNativeAnalytics.h>
+#import <AppCenterReactNativeCrashes.h>
 #import "RNBootSplash.h"
 
 #import <React/RCTBundleURLProvider.h>
@@ -11,6 +14,9 @@
 {
   [GMSServices provideAPIKey:@"AIzaSyDf7tOimtRNQXonYzQ0UhyF_tZz0sEWbiI"]; // add this line using the api key obtained from Google Console
   [FIRApp configure];
+  [AppCenterReactNative register];
+  [AppCenterReactNativeAnalytics registerWithInitiallyEnabled:true];
+  [AppCenterReactNativeCrashes registerWithAutomaticProcessing];
   self.moduleName = @"WanderlyApp";
   // You can add your custom initial props in the dictionary below.
   // They will be passed down to the ViewController used by React Native.
