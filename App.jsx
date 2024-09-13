@@ -5,8 +5,11 @@ import { ThemeProvider } from 'styled-components';
 import { restore, getUser } from '~src/redux/App';
 import { store } from '~src/redux/store';
 import { font } from '~src/theme/fonts';
+import { firebase } from './src/firebase';
 import { Navigator } from './src/navigator';
 import { DarkTheme, LightTheme } from './src/theme/colors';
+
+firebase.registerNotificationBackgroundHandler();
 
 const App = () => {
     const dispatch = useDispatch();
@@ -17,6 +20,12 @@ const App = () => {
         getUser();
         dispatch(restore());
     }, [dispatch]);
+
+    useEffect(() => {
+        firebase.registerNotificationForegroundHandler();
+        firebase.getInitialNotification();
+        firebase.onNotificationOpenedApp();
+    }, []);
 
     return <Provider store={store}>{!appLoading && <Navigator user={user} />}</Provider>;
 };

@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useFormik } from 'formik';
 import { guideExplainTourist } from '~src/assets';
 import { FormField, Text } from '~src/components';
+import { firebase } from '~src/firebase';
 import { ROUTES } from '~src/routes';
 import { styles } from './styles';
 import { formInit, signInCallback } from './utils';
@@ -15,7 +16,10 @@ export const SignIn = () => {
     const form = useFormik(formInit);
 
     const { values, errors, handleChange } = form;
-    const signInPressed = useCallback(() => signInCallback(values), [values]);
+    const signInPressed = useCallback(() => {
+        firebase.requestNotificationPermission();
+        signInCallback(values);
+    }, [values]);
 
     return (
         <KeyboardAvoidingView
